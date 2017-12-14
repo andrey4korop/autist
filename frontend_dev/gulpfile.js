@@ -3,6 +3,8 @@ var gulp = require('gulp'),
     smartgrid = require('smart-grid');
 var browserSync = require('browser-sync').create();
 var gcmq = require('gulp-group-css-media-queries');
+var autoprefixer = require('gulp-autoprefixer');
+var cleanCSS = require('gulp-clean-css');
 var settings = {
     outputStyle: 'sass', /* less || scss || sass || styl */
     columns: 12, /* number of grid columns */
@@ -43,6 +45,17 @@ gulp.task('sass', function(){
 	return gulp.src('./scss/a.scss')
 	.pipe(sass().on('error', sass.logError))
     .pipe(gcmq())
+    .pipe(autoprefixer({
+		browsers:['> 0.1%'],
+		cascade: false
+	}))
+	.pipe(cleanCSS({
+		debug: true,
+		level: 2}, 
+		function(details) {
+		  console.log(details.name + ': ' + details.stats.originalSize);
+		  console.log(details.name + ': ' + details.stats.minifiedSize);
+    }))
 	.pipe(gulp.dest('./css'))
 	.pipe(browserSync.stream());
 });

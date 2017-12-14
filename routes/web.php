@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
 });
+*/
+Route::get('/', 'PageController@index');
+Route::get('page/{url?}', 'PageController@page');
+Route::get('blog/', 'BlogController@index');
+Route::get('blog/{url}', 'BlogController@blog');
+Route::get('news/', 'NewsController@index');
+Route::get('new/{url}', 'NewsController@blog');
+Auth::routes();

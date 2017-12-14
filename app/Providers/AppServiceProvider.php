@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\News;
+use App\Page;
 use Illuminate\Support\ServiceProvider;
+use App\Blog;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +16,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Blog::saving(function ($blog) {
+            return $blog->slug();
+        });
+        News::saving(function ($blog) {
+            return $blog->slug();
+        });
+        Page::saving(function ($blog) {
+            return $blog->slug();
+        });
     }
 
     /**
