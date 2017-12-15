@@ -16,9 +16,9 @@
 });
 */
 Route::get('/', 'PageController@index');
-Route::get('page/{url?}', 'PageController@page');
+Route::get('page/{url?}', 'PageController@page')->name('page');
 Route::get('blog/', 'BlogController@index');
-Route::get('blog/{url}', 'BlogController@blog');
+Route::get('blog/{url}', 'BlogController@blog')->name('blog');
 Route::get('news/', 'NewsController@index');
-Route::get('new/{url}', 'NewsController@blog');
+Route::get('new/{url}', 'NewsController@new')->name('new');
 Auth::routes();

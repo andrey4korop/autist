@@ -131,6 +131,31 @@ body{
   margin-left: 270px;
   margin-top: 20px;
   float: left;
+  .content-all{
+    padding: 0 15px;
+    font-size: 100%;
+    letter-spacing: 0px;
+    font-family: "Roboto", Arial, Tahoma, sans-serif;
+    color: #626262;
+    strong{
+      font-weight: 700;
+    }
+    em{
+      font-style: italic;
+    }
+    ul > li{
+      list-style: disc outside;
+      margin-left: 35px;
+    }
+    a{
+      text-decoration: none;
+      color: #6699cc;
+    }
+    h1{
+      font-weight: 700;
+      color: #6699cc;
+    }
+  }
   .social {
     display: flex;
     text-align: center;
@@ -195,7 +220,7 @@ body{
   }
   .block{
     display: flex;
-    padding: 0 15px;
+
     margin-top: 50px;
   }
   .read_all{
@@ -205,12 +230,13 @@ body{
     color: #0095eb;
     margin: 30px 0;
   }
-  h1{
+  #mainPage h1{
     color: #0059eb;
     font-size: 42px;
     line-height: 42px;
     text-align: center;
     font-family: "Roboto", Arial, Tahoma, sans-serif;
+    font-weight: 400;
   }
   .this_interesting{
     @include col();
@@ -242,7 +268,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
+    padding: 10px 0;
     p{
       margin-bottom: 7px;
       /*text-transform: uppercase;*/
@@ -265,14 +291,12 @@ body{
       background-color: #f7f7f7;
       box-sizing: border-box;
       font-family: "Roboto", Arial, Tahoma, sans-serif;
-      border-color: #EBEBEB;
       box-shadow: inset 0 0 2px 2px rgba(0,0,0,0.02);
       padding: 10px;
       outline: none;
       margin: 0;
       font-size: 13px;
-      border-width: 1px;
-      border-style: solid;
+      border: 1px solid #EBEBEB;
       border-radius: 0;
       letter-spacing: normal;
       word-spacing: normal;
@@ -297,7 +321,9 @@ body{
       margin-right: 7px;
       border: 0;
       align-self: flex-start;
-      font: 400 13.3333px Arial;
+      font-weight: 400;
+      font-size: 13px;
+
       &:hover{
         background-color: #ffffff;
         color: #cc9933;
@@ -394,7 +420,8 @@ body{
     background-color: #6699cc;
     color: #ffffff;
     padding-top: 30px;
-    padding-bottom: 30px;justify-content: space-between;
+    padding-bottom: 30px;
+    justify-content: space-between;
     &_left{
       @include col-9();
     }

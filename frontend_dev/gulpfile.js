@@ -53,8 +53,9 @@ gulp.task('sass', function(){
 		debug: true,
 		level: 2}, 
 		function(details) {
-		  console.log(details.name + ': ' + details.stats.originalSize);
-		  console.log(details.name + ': ' + details.stats.minifiedSize);
+		  console.log('[cleanCSS]  Original   {' + details.name + '}: ' + details.stats.originalSize + ' Byte');
+		  console.log('[cleanCSS]  Compressed {' + details.name + '}: ' + details.stats.minifiedSize + ' Byte');
+		  console.log('[cleanCSS]  Compressed {' + details.name + '} to : ' + details.stats.minifiedSize / details.stats.originalSize * 100 + ' %');
     }))
 	.pipe(gulp.dest('./css'))
 	.pipe(browserSync.stream());

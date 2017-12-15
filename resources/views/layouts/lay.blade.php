@@ -16,7 +16,7 @@
     <nav>
         <ul>
             @each('assets.left_menu', App\LeftMenu::with('page')->orderBy('_lft')->get()->toTree(), 'menu')
-            <li><a href="" class="current">Головна</a></li>
+            <!--<li><a href="" class="current">Головна</a></li>
             <li><a href="">Аутизм</a></li>
             <li><a href="">Виявлення</a></li>
             <li><a href="">Діагностування</a></li>
@@ -32,7 +32,7 @@
             <li><a href="">FAQ</a></li>
             <li><a href="">Співпраця</a></li>
             <li><a href="">Благодійність</a></li>
-            <li><a href="">Юридична консультація</a></li>
+            <li><a href="">Юридична консультація</a></li>-->
         </ul>
     </nav>
     <div class="search">
@@ -50,7 +50,9 @@
     </div>
 </div>
 <div class="right">
-    @yield('content')
+    <div {{Route::current()->url==''?'id=mainPage':''}} class="content-all">
+        @yield('content')
+    </div>
     <div class="block footer">
         <div class="footer_left">
             <p>© 2017 Autism.ua | Всі права захищені</p>

@@ -19,7 +19,7 @@ AdminSection::registerModel(Blog::class, function (ModelConfiguration $model) {
         $form = AdminForm::panel();
         $form->setItems(
             AdminFormElement::text('title', 'Заголовок'),
-            //AdminFormElement::text('url', 'url'),
+            AdminFormElement::image('main_img', 'main_img'),
             AdminFormElement::text('author_id', 'author_id'),
             AdminFormElement::wysiwyg('content', 'Текст')->setEditor('ckeditor'),
             AdminFormElement::wysiwyg('custom_css', 'custom_css')->setEditor('ckeditor'),
