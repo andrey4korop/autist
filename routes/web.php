@@ -17,8 +17,10 @@
 */
 Route::get('/', 'PageController@index');
 Route::get('page/{url?}', 'PageController@page')->name('page');
-Route::get('blog/', 'BlogController@index');
+Route::get('blog/', 'BlogController@index')->name('blogAll');
 Route::get('blog/{url}', 'BlogController@blog')->name('blog');
-Route::get('news/', 'NewsController@index');
+Route::get('news/', 'NewsController@index')->name('newAll');
 Route::get('new/{url}', 'NewsController@new')->name('new');
+Route::get('vazlivo/', 'ThisIntController@index')->name('vazlivoAll');
+Route::get('vazlivo/{url}', 'ThisIntController@vazlivo')->name('vazlivo');
 Auth::routes();

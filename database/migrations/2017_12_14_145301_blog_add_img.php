@@ -14,7 +14,7 @@ class BlogAddImg extends Migration
     public function up()
     {
         Schema::table('blogs', function (Blueprint $table) {
-            $table->string('main_img')->after('url')->nullable()	;
+            $table->string('main_img')->after('url')->nullable();
         });
     }
 

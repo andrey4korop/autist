@@ -2,11 +2,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>{{$title}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700|Roboto+Condensed:300,400,700|Roboto:300,400,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
-
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" type="text/css" href="/css/a.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 <div class="left">
@@ -79,5 +80,14 @@
         </div>
     </div>
 </div>
+<script>
+    var t;
+    $(document).ready(function () {
+        $(".btnToggle").click(function () {
+            $(this).parent().nextUntil('.rootMenu').slideToggle("slow");;
+
+        });
+    })
+</script>
 </body>
 </html>

@@ -13,7 +13,7 @@ class NewsController extends Controller
 
     public function new(Request $request){
         $data['new'] = News::where('url', '=', $request->url)->first();
+        $data['title'] = $data['new']->title;
         return view('new', $data);
-        //Page::where('url', $request->url);
     }
 }

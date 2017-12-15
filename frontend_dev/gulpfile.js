@@ -58,12 +58,14 @@ gulp.task('sass', function(){
 		  console.log('[cleanCSS]  Compressed {' + details.name + '} to : ' + details.stats.minifiedSize / details.stats.originalSize * 100 + ' %');
     }))
 	.pipe(gulp.dest('./css'))
+	.pipe(gulp.dest('../public/css'))
 	.pipe(browserSync.stream());
 });
 gulp.task('serve', ['sass'], function() {
 
     browserSync.init({
-        server: "./"
+       // server: "./"
+        proxy: "autist/"
     });
 
     gulp.watch('./scss/a.scss', ['sass'])

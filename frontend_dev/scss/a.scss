@@ -83,9 +83,19 @@ body{
   }
   ul{
     li{
+      display: flex;
       text-align: center;
       line-height: 38px;
       border-bottom: 1px solid rgba(0,0,0,0.05);
+      &.toggle{
+        display: none;
+      }
+      &.rootMenu a{
+        margin-right: -28px;
+      }
+      .btnToggle{
+        padding: 0 10px;
+      }
       a{
         display: block;
         text-decoration: none;

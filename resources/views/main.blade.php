@@ -33,12 +33,14 @@
         <div class="this_interesting">
             <h1>ЦЕ ВАЖЛИВО</h1>
             <div class="this_interesting_block">
-                <a href="" class="read_all">Читати все</a>
+                <a href="{{route('vazlivoAll')}}" class="read_all">Читати все</a>
                 <div class="flex-rov">
-                    <a href=""><img src="https://autism.ua/wp-content/uploads/2017/08/drVfJiLi3JA17dvuLD5vsA-default.jpg" alt=""></a>
+                    @if(!empty($ThisInt->main_img))
+                    <a href="{{route('vazlivo',['url' => $ThisInt->url])}}"><img src="{{$ThisInt->maim_img}}" alt=""></a>
+                    @endif
                     <div class="flex-column jc-sb">
-                        <a href="" class="title">Посібник : "Включення в групу однолітків і створення умов, що сприяють навчанню"</a>
-                        <a href="" class="read_more">Читати далi</a>
+                        <a href="{{route('vazlivo',['url' => $ThisInt->url])}}" class="title">{{$ThisInt->title}}</a>
+                        <a href="{{route('vazlivo',['url' => $ThisInt->url])}}" class="read_more">Читати далi</a>
                     </div>
                 </div>
             </div>
@@ -52,7 +54,7 @@
     </div>
     <div class="block flex-column">
         <h1>ОСТАННІ НОВИНИ</h1>
-        <a href="" class="read_all">Читати все</a>
+        <a href="{{route('newAll')}}" class="read_all">Читати все</a>
         <div class="news flex-row jc-sb">
             @foreach($news as $new)
             <div class="new">
@@ -87,7 +89,7 @@
         </div>
         <div class="col-6 block2_right">
             <h1>БЛОГ</h1>
-            <a href="" class="read_all">Читати все</a>
+            <a href="{{route('blogAll')}}" class="read_all">Читати все</a>
             <div class="blogs">
                 @foreach($blogs as $blog)
                 <div class="blog">
