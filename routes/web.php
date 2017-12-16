@@ -23,4 +23,6 @@ Route::get('news/', 'NewsController@index')->name('newAll');
 Route::get('new/{url}', 'NewsController@new')->name('new');
 Route::get('vazlivo/', 'ThisIntController@index')->name('vazlivoAll');
 Route::get('vazlivo/{url}', 'ThisIntController@vazlivo')->name('vazlivo');
+
+Route::post('comment', ['uses' => 'CommentController@store', 'as' => 'comment']);
 Auth::routes();

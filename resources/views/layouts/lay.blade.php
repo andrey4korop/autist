@@ -8,6 +8,17 @@
     <link rel="icon" href="/img/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" type="text/css" href="/css/a.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" media="all" href="{{asset('css')}}/app.css" >
+    <link rel="stylesheet" type="text/css" media="all" href="{{asset('comments/css')}}/comments.css" >
+
+
+    <script type="text/javascript" src="{{asset('js')}}/app.js" ></script>
+    <script type="text/javascript" src="{{asset('comments/js')}}/comment-reply.js"></script>
+    <script type="text/javascript" src="{{asset('comments/js')}}/comment-scripts.js"></script>
+
+
 </head>
 <body>
 <div class="left">

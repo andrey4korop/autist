@@ -1,0 +1,41 @@
+@mixin button(){
+  .facebook{
+    background: #3a579a!important;
+  }
+  .messenger{
+    background: #0d87ff!important;
+  }
+  .vk{
+    background: #4c75a3!important;
+  }
+  .google-plus{
+    background: #EA4335!important;
+  }
+  .twitter{
+    background: #00abf0!important;
+  }
+  .pinterest{
+    background: #cd1c1f!important;
+  }
+  .linkedin{
+    background: #127bb6!important;
+  }
+  .telegram{
+    background: #08c!important;
+  }
+  .viber{
+    background: #7d539d!important;
+  }
+  .whatsapp{
+    background: #1D9E11!important;
+  }
+  .print{
+    background: #666!important;
+  }
+  .envelope{
+    background: #666!important;
+  }
+  .skype{
+    background: #00aff0!important;
+  }
+}
