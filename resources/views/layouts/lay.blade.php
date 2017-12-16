@@ -10,7 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 
-    <link rel="stylesheet" type="text/css" media="all" href="{{asset('css')}}/app.css" >
+    <!--<link rel="stylesheet" type="text/css" media="all" href="{{asset('css')}}/app.css" >-->
     <link rel="stylesheet" type="text/css" media="all" href="{{asset('comments/css')}}/comments.css" >
 
 
@@ -92,7 +92,7 @@
     </div>
 </div>
 <script>
-    var t;
+
     $(document).ready(function () {
         $(".btnToggle").click(function () {
             $(this).parent().nextUntil('.rootMenu').slideToggle("slow");;

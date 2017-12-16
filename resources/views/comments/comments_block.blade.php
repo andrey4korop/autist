@@ -39,8 +39,8 @@
 		<h3 id="reply-title">Написать <span>комментарий</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display:none;">Отменить ответ</a></small></h3>
 		<!--параметр action используется ajax-->
 		<form action="{{ route('comment')}}" method="post" id="commentform">
-			<p class="comment-form-author"><label for="author">Имя</label> <input id="name" name="name" type="text" value="" size="30" aria-required="true" /></p>
-			<p class="comment-form-email"><label for="email">Email</label> <input id="email" name="email" type="text" value="" size="30" aria-required="true" /></p>
+			<p class="comment-form-author"><label for="name">Имя</label> <input id="name" name="name" type="text" value="" size="30" aria-required="true"></p>
+			<p class="comment-form-email"><label for="email">Email</label> <input id="email" name="email" type="text" value="" size="30" aria-required="true"></p>
 			<p class="comment-form-comment"><label for="comment">Ваш комментарий</label><textarea id="comment" name="text" cols="45" rows="8"></textarea></p>
 
 			<!--Данные поля так же нужны для работы JS - вставки формы сразу за комментарием на который нужно ответить--> 
@@ -52,10 +52,9 @@
 
 			<div class="clear"></div>
 			<p class="form-submit">
-				<input name="submit" type="submit" id="submit" value="Отправить" />
+				<input name="submit" type="submit" id="submit" value="Отправить">
 			</p>
 		</form>
 	</div>
 	
-</div>
 </div>

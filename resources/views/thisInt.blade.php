@@ -90,4 +90,5 @@
             </a>
         </li>
     </ul>
+    @include('comments.comments_block', ['essence' => $thisInt])
 @endsection
