@@ -25,80 +25,17 @@ use SleepingOwl\Admin\Navigation\Page;
  AdminSection::addMenuPage(\App\ThisInt::class)->setIcon('fa fa-newspaper-o');
  AdminSection::addMenuPage(\App\LeftMenu::class)->setIcon('fa fa-newspaper-o');
 
-/*return [
+return [
     [
-        'title' => 'Dashboard',
-        'icon'  => 'fa fa-dashboard',
-        'url'   => route('admin.dashboard'),
-    ],
-
-    [
-        'title' => 'Information',
-        'icon'  => 'fa fa-exclamation-circle',
-        'url'   => route('admin.information'),
-    ],*/
-    /*[
-        'title' => 'Сайт',
-        'icon'  => 'fa fa-user',
+        'title' => 'forum',
+        'icon' => 'fa fa-group',
         'pages' => [
-            (new Page(\App\Page::class))
-                ->setIcon('fa fa-briefcase')
-                ->setPriority(1)
-                ->setTitle('Проэкты'),
-
+            (new Page(\App\User::class))
+                ->setIcon('fa fa-user')
+                ->setPriority(0),
+            (new Page(\App\Channel::class))
+                ->setIcon('fa fa-group')
+                ->setPriority(100)
         ]
-    ],*/
-
-    // Examples
-    // [
-    //    'title' => 'Content',
-    //    'pages' => [
-    //
-    //        \App\User::class,
-    //
-    //        // or
-    //
-    //        (new Page(\App\User::class))
-    //            ->setPriority(100)
-    //            ->setIcon('fa fa-user')
-    //            ->setUrl('users')
-    //            ->setAccessLogic(function (Page $page) {
-    //                return auth()->user()->isSuperAdmin();
-    //            }),
-    //
-    //        // or
-    //
-    //        new Page([
-    //            'title'    => 'News',
-    //            'priority' => 200,
-    //            'model'    => \App\News::class
-    //        ]),
-    //
-    //        // or
-    //        (new Page(/* ... */))->setPages(function (Page $page) {
-    //            $page->addPage([
-    //                'title'    => 'Blog',
-    //                'priority' => 100,
-    //                'model'    => \App\Blog::class
-	//		      ));
-    //
-	//		      $page->addPage(\App\Blog::class);
-    //	      }),
-    //
-    //        // or
-    //
-    //        [
-    //            'title'       => 'News',
-    //            'priority'    => 300,
-    //            'accessLogic' => function ($page) {
-    //                return $page->isActive();
-    //		      },
-    //            'pages'       => [
-    //
-    //                // ...
-    //
-    //            ]
-    //        ]
-    //    ]
-    // ]
-//];
+    ]
+];

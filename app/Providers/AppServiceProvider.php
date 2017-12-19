@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Channel;
 use App\LeftMenu;
 use App\News;
 use App\Page;
@@ -22,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
             return $blog->slug();
         });
         News::saving(function ($new) {
+            return $new->slug();
+        });
+        Channel::saving(function ($new) {
             return $new->slug();
         });
         Page::saving(function ($page) {
