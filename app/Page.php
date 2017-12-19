@@ -14,4 +14,8 @@ class Page extends Model
         $this->url = \Slug::make($this->title);
         return true;
     }
+    public function left_menu()
+    {
+        return $this->belongsTo('App\LeftMenu', 'id', 'page_id');
+    }
 }

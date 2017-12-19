@@ -4,11 +4,13 @@ use SleepingOwl\Admin\Model\ModelConfiguration;
 AdminSection::registerModel(LeftMenu::class, function (ModelConfiguration $model) {
     $model->setTitle('LeftMenu')->setAlias('LeftMenu');
     $model->onDisplay(function () {
-        $display = AdminDisplay::tree()->setValue('page_id')
+        $display = AdminDisplay::tree();
+        //$display->with('title');
+        $display->setValue('title');
             //->setParentField('parent_id')
-            ->setReorderable(true)
+        $display->setReorderable(true);
             //->setOrderField('order');
-            ;
+
       
         return $display;
     });
