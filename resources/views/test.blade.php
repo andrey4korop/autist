@@ -32,10 +32,30 @@
 
          <li>{{$channels3->name}}</li>
            @forelse($channels3->threads as $threads)
-               <li>{{$threads->title}}</li>
+               <li><a href="{{route('replies', ['channel'=> $channels3->slug, 'thread' =>$threads->id])}}">{{$threads->title}}</a></li>
            @empty
            @endforelse
        </ul>
+   @endif
+
+   @if(isset($threads))
+       <ul>
+           <li role="separator" class="divider"></li>
+
+           <li>{{$threads->title}}</li>
+           @forelse($threads->replies as $replie)
+               <li>{{$replie->body}}</li>
+           @empty
+           @endforelse
+       </ul>
+
+       <form action="/{{Request::path()}}" method="POST">
+
+           <textarea name="body" id="" cols="30" rows="10"></textarea>
+           <input type="text" name="user_id">
+           <input type="submit">
+           {{ csrf_field() }}
+       </form>
    @endif
 
 
