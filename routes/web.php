@@ -29,9 +29,9 @@ Auth::routes();
 
 Route::group(['prefix' => 'forum'], function () {
     Route::get('/', 'ThreadsController@index')->name('forum');
+    Route::get('/{channel}', 'ThreadsController@channel')->name('channel');
 });
 /*
-Route::get('/', 'ThreadsController@index');
 Route::get('threads/create', 'ThreadsController@create');
 Route::get('threads/{channel}/{thread}', 'ThreadsController@show');
 Route::delete('threads/{channel}/{thread}', 'ThreadsController@destroy');

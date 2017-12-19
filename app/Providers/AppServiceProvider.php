@@ -25,8 +25,8 @@ class AppServiceProvider extends ServiceProvider
         News::saving(function ($new) {
             return $new->slug();
         });
-        Channel::saving(function ($new) {
-            return $new->slug();
+        Channel::saving(function ($channel) {
+            return $channel->slug();
         });
         Page::saving(function ($page) {
             if(!empty($page->left_menu)){
