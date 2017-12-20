@@ -36,6 +36,7 @@
            @empty
            @endforelse
        </ul>
+       <a href="{{route('threads', ['channel' => $channels3->slug])}}">ADD thread</a>
    @endif
 
    @if(isset($threads))
@@ -56,7 +57,17 @@
            <input type="submit">
            {{ csrf_field() }}
        </form>
+       @else
+       <form action="/{{Request::path()}}" method="POST">
+           <input type="text" name="title">
+           <textarea name="body" id="" cols="30" rows="10"></textarea>
+           <input type="text" name="user_id">
+
+           <input type="submit">
+           {{ csrf_field() }}
+       </form>
    @endif
+
 
 
 

@@ -30,11 +30,13 @@ Auth::routes();
 Route::group(['prefix' => 'forum'], function () {
     Route::get('/', 'ThreadsController@index')->name('forum');
     Route::get('/{channel}', 'ThreadsController@channel')->name('channel');
-    Route::get('/threads/{channel}/{thread}', 'ThreadsController@replies')->name('replies');
-    Route::post('/threads/{channel}/{thread}', 'ThreadsController@repliesCreate')->name('repliesCreate');
+    Route::get('/{channel}/create', 'ThreadsController@threadscreate')->name('threads');
+    Route::post('/{channel}/create', 'ThreadsController@threadssave');
+    Route::get('/{channel}/{thread}', 'ThreadsController@replies')->name('replies');
+    Route::post('/{channel}/{thread}', 'ThreadsController@repliesCreate')->name('repliesCreate');
 });
 /*
-Route::get('threads/create', 'ThreadsController@create');
+
 Route::get('threads/{channel}/{thread}', 'ThreadsController@show');
 Route::delete('threads/{channel}/{thread}', 'ThreadsController@destroy');
 Route::post('threads', 'ThreadsController@store');
