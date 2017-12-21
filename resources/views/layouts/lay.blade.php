@@ -17,6 +17,7 @@
     <script type="text/javascript" src="{{asset('js')}}/app.js" ></script>
     <script type="text/javascript" src="{{asset('comments/js')}}/comment-reply.js"></script>
     <script type="text/javascript" src="{{asset('comments/js')}}/comment-scripts.js"></script>
+    <script src="/js/tinymce/tinymce.min.js"></script>
 
 
 </head>
@@ -94,6 +95,18 @@
 <script>
 
     $(document).ready(function () {
+        tinymce.init({
+            selector:'textarea',
+            language: 'uk_UA',
+            plugins: [
+                "advlist autolink link image lists charmap hr anchor pagebreak",
+                "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                "table contextmenu directionality emoticons textcolor paste textcolor colorpicker textpattern"
+            ],
+            toolbar1: "bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+            toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media  | insertdatetime | forecolor backcolor",
+            toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | | ltr rtl | visualchars visualblocks nonbreaking pagebreak restoredraft | code",
+        });
         $(".btnToggle").click(function () {
             $(this).parent().nextUntil('.rootMenu').slideToggle("slow");;
 
