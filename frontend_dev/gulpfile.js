@@ -53,9 +53,9 @@ gulp.task('sass', function(){
 		debug: true,
 		level: 2}, 
 		function(details) {
-		  console.log('[cleanCSS]  Original   {' + details.name + '}: ' + details.stats.originalSize + ' Byte');
-		  console.log('[cleanCSS]  Compressed {' + details.name + '}: ' + details.stats.minifiedSize + ' Byte');
-		  console.log('[cleanCSS]  Compressed {' + details.name + '} to : ' + details.stats.minifiedSize / details.stats.originalSize * 100 + ' %');
+		  console.log('[cleanCSS]  Original   {' + details.name + '}: ' + details.stats.originalSize + ' Byte [' + Math.floor(details.stats.originalSize /1024) + ' KByte]');
+		  console.log('[cleanCSS]  Compressed {' + details.name + '}: ' + details.stats.minifiedSize + ' Byte [' + Math.floor(details.stats.minifiedSize /1024) + ' KByte]');
+		  console.log('[cleanCSS]  Compressed {' + details.name + '} to : ' + Math.floor(details.stats.minifiedSize / details.stats.originalSize * 100) + ' %');
     }))
 	.pipe(gulp.dest('./css'))
 	.pipe(gulp.dest('../public/css'))
@@ -64,7 +64,7 @@ gulp.task('sass', function(){
 gulp.task('serve', ['sass'], function() {
 
     browserSync.init({
-       // server: "./"
+        //server: "./"
         proxy: "autist/"
     });
 

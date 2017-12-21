@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8e834d6fecc2fa0674fe0864d950e2c1",
+    "content-hash": "820729f106fe511ff3836d38185c98f5",
     "packages": [
         {
             "name": "alexusmai/ruslug",
@@ -898,6 +898,52 @@
                 "parser"
             ],
             "time": "2017-11-14T20:44:03+00:00"
+        },
+        {
+            "name": "falur/laravel-breadcrumbs",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/falur/laravel-breadcrumbs.git",
+                "reference": "b29e036c59307613cf66e996f57e1f92dc19bcfe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/falur/laravel-breadcrumbs/zipball/b29e036c59307613cf66e996f57e1f92dc19bcfe",
+                "reference": "b29e036c59307613cf66e996f57e1f92dc19bcfe",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.*",
+                "illuminate/view": "5.*",
+                "php": ">=5.6.4"
+            },
+            "require-dev": {
+                "orchestra/testbench": "3.3.*",
+                "phpunit/phpunit": "5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Falur\\Breadcrumbs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ildar Enakaev",
+                    "email": "ienakaev@ya.ru"
+                }
+            ],
+            "description": "Laravel Breadcrumbs",
+            "keywords": [
+                "breadcrumbs",
+                "laravel"
+            ],
+            "time": "2017-03-16T13:11:31+00:00"
         },
         {
             "name": "fideloper/proxy",

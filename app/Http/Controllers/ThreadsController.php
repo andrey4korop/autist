@@ -5,27 +5,39 @@ namespace App\Http\Controllers;
 use App\Channel;
 use App\Reply;
 use App\Thread;
+use Falur\Breadcrumbs\Breadcrumbs;
 use Illuminate\Http\Request;
 
 class ThreadsController extends Controller
 {
+    protected $breadcrumbs;
+
+    public function __construct()
+    {
+        $this->breadcrumbs = new Breadcrumbs();
+        $this->breadcrumbs->add('Главная', '/');
+        $this->breadcrumbs->add('forum', route('forum'));
+    }
     public function index(){
+
         $data['title'] = 'forum';
-        $data['channels'] = Channel::all();
-        $data['channels2'] = Channel::with('threads')->get();
-        return view('test', $data);
+        $data['breadcrumbs'] = $this->breadcrumbs;
+        $data['channels'] = Channel::with('threads')->get();
+        return view('forum.index', $data);
     }
     public function channel(Channel $channel){
-
+        $this->breadcrumbs->add('forum', route('channel', ['channel' => $channel->slug]));
         $data['title'] = 'forum';
-
-        $data['channels3'] = $channel;
-        return view('test', $data);
+        $data['breadcrumbs'] = $this->breadcrumbs;
+        $data['channel'] = $channel;
+        return view('forum.channel', $data);
     }
     public function threadscreate(Channel $channel){
+        $this->breadcrumbs->add($channel->name, route('channel', ['channel' => $channel->slug]));
         $data['title'] = 'forum';
-
-        return view('test', $data);
+        $data['breadcrumbs'] = $this->breadcrumbs;
+        $data['channel'] = $channel;
+        return view('forum.createthread', $data);
     }
     public function threadssave(Channel $channel, Request $request){
 
@@ -39,11 +51,15 @@ class ThreadsController extends Controller
         return $this->channel($channel);
     }
     public function replies(Channel $channel, Thread $thread){
+        $this->breadcrumbs->add($channel->name, route('channel', ['channel' => $channel->slug]));
+        $this->breadcrumbs->add($thread->title, route('replies', ['channel' => $channel->slug, 'thread' => $thread->id]));
 
         $data['title'] = 'forum';
+        $data['breadcrumbs'] = $this->breadcrumbs;
 
         $data['threads'] = $thread;
-        return view('test', $data);
+        $data['replies'] = $thread->replies()->paginate(5);
+        return view('forum.thread', $data);
     }
     public function repliesCreate(Channel $channel, Thread $thread, Request $request){
 
@@ -53,7 +69,7 @@ class ThreadsController extends Controller
         $thread->replies()->save($reply);
 
 
-        return $this->replies( $channel, $thread);
+        return back();
     }
 
 }
