@@ -1,69 +1,41 @@
-@extends('layouts.app')
+@extends('layouts.lay')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
+    <form class="form_login" method="POST" action="{{ route('login') }}">
+        <h3 class="">Увійти</h3>
+        {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
+        <p class="label">Електронна пошта</p>
+        <input type="email" name="email" value="{{ old('email') }}" required>
+        @if ($errors->has('email'))
+            <span class="red">
+                <strong>{{ $errors->first('email') }}</strong>
+            </span>
+        @endif
+        <p class="label">Пароль</p>
+        <input type="password" name="password" required>
+        @if ($errors->has('password'))
+            <span class="red">
+                <strong>{{ $errors->first('password') }}</strong>
+            </span>
+        @endif
+        <div class="flex-rov">
+         <p class="label">Зам'ятати</p>
+            <label for="cbx" class="label-cbx">
+                <input type="checkbox" id="cbx" name="remember" class="invisible" {{ old('remember') ? 'checked' : '' }}>
+                <div class="checkbox">
+                    <svg width="20px" height="20px" viewBox="0 0 20 20">
+                        <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                        <polyline points="4 11 8 15 16 6"></polyline>
+                    </svg>
                 </div>
-            </div>
+            </label>
         </div>
-    </div>
-</div>
+        <div class="flex-rov jc-sb">
+            <button type="submit">Увійти</button>
+            <a class="btn" href="{{ route('password.request') }}">Забули пароль?</a>
+        </div>
+    </form>
+
 @endsection
