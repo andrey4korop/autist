@@ -2,11 +2,13 @@
 
 namespace App\Providers;
 
+use App\BottomMenu;
 use App\Channel;
 use App\LeftMenu;
 use App\News;
 use App\Page;
 use App\ThisInt;
+use App\TopMenu;
 use Illuminate\Support\ServiceProvider;
 use App\Blog;
 
@@ -39,6 +41,14 @@ class AppServiceProvider extends ServiceProvider
         LeftMenu::saving(function ($leftMenu) {
             $leftMenu->title = $leftMenu->page->title;
             return $leftMenu;
+        });
+        TopMenu::saving(function ($topMenu) {
+            $topMenu->title = $topMenu->page->title;
+            return $topMenu;
+        });
+        BottomMenu::saving(function ($bottomMenu) {
+            $bottomMenu->title = $bottomMenu->page->title;
+            return $bottomMenu;
         });
         ThisInt::saving(function ($page) {
             return $page->slug();

@@ -9,15 +9,17 @@ use App\News;
 class NewsController extends Controller
 {
     public function index(){
-        $News = News::first();
-        return view('page', $News);
+        $data['contents'] = News::orderBy('created_at', 'desc')->paginate(10);
+        $data['title'] = 'Новини';
+        $data['RouteName'] = 'new';
+        return view('contentall', $data);
     }
 
     public function new(Request $request){
-        $data['new'] = News::where('url', '=', $request->url)->first();
-        $data['title'] = $data['new']->title;
+        $data['content'] = News::where('url', '=', $request->url)->first();
+        $data['title'] = $data['content']->title;
 
 
-        return view('new', $data);
+        return view('content', $data);
     }
 }

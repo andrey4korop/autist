@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Blog;
+use App\Channel;
 use App\News;
 use App\ThisInt;
 use Illuminate\Http\Request;
@@ -17,6 +18,7 @@ class PageController extends Controller
         $data['blogs'] = Blog::limit(6)->orderBy('created_at','desc')->get();
         $data['news'] = News::limit(4)->orderBy('created_at','desc')->get();
         $data['ThisInt'] = ThisInt::limit(1)->orderBy('created_at','desc')->first();
+        $data['Channels'] = Channel::all();
         return view('main', $data);
     }
 

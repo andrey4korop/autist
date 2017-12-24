@@ -2,5 +2,5 @@
     {!!  !$menu->children->isEmpty()?'<span class=btnToggle>+</span>':''!!}
 </li>
 @if(!$menu->children->isEmpty())
-    @each('assets.left_menu', $menu->children, 'menu')
+    @each('vendor.menu.left_menu', $menu->children, 'menu')
 @endif

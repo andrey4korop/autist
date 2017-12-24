@@ -28,6 +28,9 @@ textarea{
   color: #161922;
   display: block;
 }
+.titleCont{
+  margin: 25px 0;
+}
 .author{
   display: inline-block;
   text-decoration: none;
@@ -322,6 +325,18 @@ ul#pagination{
       text-align: center;
     }
   }
+  .contentAll{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .contentOne{
+      @include col-6();
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
   .social {
     display: flex;
     text-align: center;
@@ -368,7 +383,7 @@ ul#pagination{
     form {
       display: flex;
       @include justify-content(space-around);
-      button {
+      a{
         background-color: #5EA3E3;
         color: #fff;
         border: none;
@@ -550,9 +565,15 @@ ul#pagination{
       text-align: center;
       .forum_category{
         width: 140px;
-        border-width: 0 0 2px;
+        border-color: rgba(0,0,0,0.2);
+        border-width: 0 0 1px;
+        border-style: solid;
         margin: 0 10px;
         padding: 25px 15px;
+        &:hover{
+          border-width: 0 0 1px;
+          border-color: rgb(1, 149, 235);
+        }
       }
       i.fa{
         color: #0095eb;

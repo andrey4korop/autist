@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>{{$title or ''}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700|Roboto+Condensed:300,400,700|Roboto:300,400,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
     <link rel="icon" href="/img/favicon.ico" type="image/x-icon"/>
@@ -28,7 +28,7 @@
     </div>
     <nav>
         <ul>
-            @each('assets.left_menu', App\LeftMenu::with('page')->orderBy('_lft')->get()->toTree(), 'menu')
+            @each('vendor.menu.left_menu', App\LeftMenu::with('page')->orderBy('_lft')->get()->toTree(), 'menu')
             <!--<li><a href="" class="current">Головна</a></li>
             <li><a href="">Аутизм</a></li>
             <li><a href="">Виявлення</a></li>
@@ -70,13 +70,14 @@
         <div class="footer_left">
             <p>© 2017 Autism.ua | Всі права захищені</p>
             <nav class="bottom">
-                <a href="#">Про Нас</a><p>|</p>
+                @include('vendor.menu.bottom_menu')
+                {{--<a href="#">Про Нас</a><p>|</p>
                 <a href="#">Медiа</a><p>|</p>
                 <a href="#">Зi ЗМI</a><p>|</p>
                 <a href="#">Правила форуму</a><p>|</p>
                 <a href="#">FAQ</a><p>|</p>
                 <a href="#">Контакти</a><p>|</p>
-                <a href="#">Інформація для рекламодавців</a>
+                <a href="#">Інформація для рекламодавців</a>--}}
             </nav>
         </div>
         <div class="footer_rigth">

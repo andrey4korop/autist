@@ -14,21 +14,19 @@
         <div class="ads_content"><img src="/img/ads.png" alt=""></div>
     </div>
     <div class="top_menu">
-        <a href="">Про Нас</a>
-        <a href="">Контакти</a>
-        <a href="">Медія</a>
-        <a href="">Зі ЗМІ</a>
-        <a href="">Новини</a>
+        @each('vendor.menu.top_menu', App\TopMenu::with('page')->orderBy('_lft')->get(), 'menu')
     </div>
     <div class="slider">
         <img src="/img/slider_001.jpg" alt="">
     </div>
+    @if(!Auth::check())
     <div class="login">
         <form action="">
-            <button>Увійти</button>
-            <button id="registration">Реєстрація</button>
+            <a href="{{route('login')}}">Увійти</a>
+            <a href="{{route('register')}}" id="registration">Реєстрація</a>
         </form>
     </div>
+    @endif
     <div class="block block_1">
         <div class="this_interesting">
             <h1>ЦЕ ВАЖЛИВО</h1>
@@ -48,7 +46,10 @@
         <div class="video">
             <h1>ВІДЕО</h1>
             <div class="video_content">
-                <img src="https://autism.ua/wp-content/uploads/2017/08/drVfJiLi3JA17dvuLD5vsA-default.jpg" alt="">
+                <div class="youtube-embed-wrapper" style="position:relative;padding-bottom:56.25%;padding-top:30px;height:0;overflow:hidden"><iframe allowfullscreen="" frameborder="0" height="360" src="https://www.youtube.com/embed/4EOdCGVNx4w" style="position:absolute;top:0;left:0;width:100%;height:100%" width="640"></iframe></div>
+                <div class="youtube-embed-wrapper" style="position:relative;padding-bottom:56.25%;padding-top:30px;height:0;overflow:hidden"><iframe allowfullscreen="" frameborder="0" height="360" src="https://www.youtube.com/embed/4EOdCGVNx4w" style="position:absolute;top:0;left:0;width:100%;height:100%" width="640"></iframe></div>
+                <div class="youtube-embed-wrapper" style="position:relative;padding-bottom:56.25%;padding-top:30px;height:0;overflow:hidden"><iframe allowfullscreen="" frameborder="0" height="360" src="https://www.youtube.com/embed/4EOdCGVNx4w" style="position:absolute;top:0;left:0;width:100%;height:100%" width="640"></iframe></div>
+                <div class="youtube-embed-wrapper" style="position:relative;padding-bottom:56.25%;padding-top:30px;height:0;overflow:hidden"><iframe allowfullscreen="" frameborder="0" height="360" src="https://www.youtube.com/embed/4EOdCGVNx4w" style="position:absolute;top:0;left:0;width:100%;height:100%" width="640"></iframe></div>
             </div>
         </div>
     </div>
@@ -126,47 +127,25 @@
         <h1>ФОРУМ</h1>
         <p>оберіть один з топиків нашого форуму</p>
         <div class="forum">
-            <div class="forum_category">
+            @foreach($Channels as $Channel)
+            <a href="{{route('channel', ['channel' => $Channel->slug])}}" class="forum_category">
                 <i class="fa fa-podcast" aria-hidden="true"></i>
-                <p>Найкращі виступи на конференції</p>
+                <p>{{$Channel->name}}</p>
+            </a>
+            @endforeach
 
-            </div>
-            <div class="forum_category">
-                <i class="fa fa-podcast" aria-hidden="true"></i>
-                <p>Найкращі виступи на конференції</p>
-
-            </div>
-            <div class="forum_category">
-                <i class="fa fa-podcast" aria-hidden="true"></i>
-                <p>Найкращі виступи на конференції</p>
-
-            </div>
-            <div class="forum_category">
-                <i class="fa fa-podcast" aria-hidden="true"></i>
-                <p>Найкращі виступи на конференції</p>
-
-            </div>
-            <div class="forum_category">
-                <i class="fa fa-podcast" aria-hidden="true"></i>
-                <p>Найкращі виступи на конференції</p>
-
-            </div>
-            <div class="forum_category">
-                <i class="fa fa-podcast" aria-hidden="true"></i>
-                <p>Найкращі виступи на конференції</p>
-
-            </div>
         </div>
     </div>
+    @if(!Auth::check())
     <div class="block login">
         <div class="message">
             <p>Ви повинні увійти в систему для перегляду цієї сторінки</p>
         </div>
         <form action="">
-            <button>Увійти</button>
-            <button id="registration">Реєстрація</button>
+            <a href="{{route('login')}}">Увійти</a>
+            <a href="{{route('register')}}" id="registration">Реєстрація</a>
         </form>
     </div>
-
+    @endif
 
 @endsection

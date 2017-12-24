@@ -8,13 +8,15 @@ use Illuminate\Http\Request;
 class ThisIntController extends Controller
 {
     public function index(){
-        $News = ThisInt::first();
-        return view('page', $News);
+        $data['contents'] = ThisInt::orderBy('created_at', 'desc')->paginate(10);
+        $data['title'] = 'Це важливо';
+        $data['RouteName'] = 'vazlivo';
+        return view('contentall', $data);
     }
 
     public function vazlivo(Request $request){
-        $data['thisInt'] = ThisInt::where('url', '=', $request->url)->first();
-        $data['title'] = $data['thisInt']->title;
-        return view('thisInt', $data);
+        $data['content'] = ThisInt::where('url', '=', $request->url)->first();
+        $data['title'] = $data['content']->title;
+        return view('content', $data);
     }
 }

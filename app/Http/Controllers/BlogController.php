@@ -8,13 +8,15 @@ use App\Blog;
 class BlogController extends Controller
 {
     public function index(){
-        $data['blog'] = Blog::first();
-        return view('page', $data);
+        $data['contents'] = Blog::orderBy('created_at', 'desc')->paginate(10);
+        $data['title'] = 'Блог';
+        $data['RouteName'] = 'blog';
+        return view('contentall', $data);
     }
 
     public function blog(Request $request){
-        $data['blog'] = Blog::where('url', '=', $request->url)->first();
-        $data['title'] = $data['blog']->title;
-        return view('blog', $data);
+        $data['content'] = Blog::where('url', '=', $request->url)->first();
+        $data['title'] = $data['content']->title;
+        return view('content', $data);
     }
 }
