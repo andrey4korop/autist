@@ -23,6 +23,8 @@ Route::get('news/', 'NewsController@index')->name('newAll');
 Route::get('new/{url}', 'NewsController@new')->name('new');
 Route::get('vazlivo/', 'ThisIntController@index')->name('vazlivoAll');
 Route::get('vazlivo/{url}', 'ThisIntController@vazlivo')->name('vazlivo');
+Route::get('media/', 'MediaController@index')->name('mediaAll');
+Route::get('media/{url}', 'MediaController@media')->name('media');
 
 Route::post('comment', ['uses' => 'CommentController@store', 'as' => 'comment']);
 Auth::routes();

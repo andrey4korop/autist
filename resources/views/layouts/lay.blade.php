@@ -18,6 +18,7 @@
     <script type="text/javascript" src="{{asset('comments/js')}}/comment-reply.js"></script>
     <script type="text/javascript" src="{{asset('comments/js')}}/comment-scripts.js"></script>
     <script src="/js/tinymce/tinymce.min.js"></script>
+    <script src="/js/slick/slick.min.js"></script>
 
 
 </head>
@@ -111,6 +112,15 @@
         $(".btnToggle").click(function () {
             $(this).parent().nextUntil('.rootMenu').slideToggle("slow");;
 
+        });
+        $('.video_content').slick({
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            speed: 1000,
+            adaptiveHeight: true,
+            fade: true,
+            cssEase: 'linear'
         });
     })
 </script>

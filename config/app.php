@@ -170,6 +170,7 @@ return [
         SleepingOwl\Admin\Providers\SleepingOwlServiceProvider::class,
         Chencha\Share\ShareServiceProvider::class,
         Falur\Breadcrumbs\Providers\ServiceProvider::class,
+        Alaouy\Youtube\YoutubeServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -231,6 +232,7 @@ return [
     'Share' => Chencha\Share\ShareFacade::class,
     'Breadcrumbs' => Falur\Breadcrumbs\Facades\Breadcrumbs::class,
     'BreadcrumbsFactory' => Falur\Breadcrumbs\Facades\BreadcrumbsFactory::class,
+        'Youtube' => Alaouy\Youtube\Facades\Youtube::class,
     ],
 
 ];

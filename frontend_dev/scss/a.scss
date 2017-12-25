@@ -2,6 +2,8 @@
 @import "fa/font-awesome";
 @import "vendor/socialButton.scss";
 @import "vendor/checkbox.scss";
+@import "vendor/slick";
+@import "vendor/slick-theme";
 @include reset();
 
 html,body{
@@ -85,6 +87,14 @@ textarea{
   border-color: #ebccd1;
   border-radius: 4px;
   padding: 7px;
+}
+.youtube-embed-wrapper{
+  margin: 25px 0;
+  position:relative;
+  padding-bottom:56.25%;
+  padding-top:30px;
+  height:0;
+  overflow:hidden
 }
 @include checkbox();
 #breadcrumb {
@@ -330,6 +340,7 @@ ul#pagination{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+
     .contentOne{
       @include col-6();
       display: flex;
@@ -761,7 +772,19 @@ ul#pagination{
       }
     }
   }
+  .contentOneColumn{
 
+    .contentOne{
+      display: flex;
+      justify-content: space-around;
+      .col_left{
+        @include size(4);
+      }
+      .col_rigth{
+        @include size(8);
+      }
+    }
+  }
 
 }
 

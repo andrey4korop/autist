@@ -46,10 +46,9 @@
         <div class="video">
             <h1>ВІДЕО</h1>
             <div class="video_content">
-                <div class="youtube-embed-wrapper" style="position:relative;padding-bottom:56.25%;padding-top:30px;height:0;overflow:hidden"><iframe allowfullscreen="" frameborder="0" height="360" src="https://www.youtube.com/embed/4EOdCGVNx4w" style="position:absolute;top:0;left:0;width:100%;height:100%" width="640"></iframe></div>
-                <div class="youtube-embed-wrapper" style="position:relative;padding-bottom:56.25%;padding-top:30px;height:0;overflow:hidden"><iframe allowfullscreen="" frameborder="0" height="360" src="https://www.youtube.com/embed/4EOdCGVNx4w" style="position:absolute;top:0;left:0;width:100%;height:100%" width="640"></iframe></div>
-                <div class="youtube-embed-wrapper" style="position:relative;padding-bottom:56.25%;padding-top:30px;height:0;overflow:hidden"><iframe allowfullscreen="" frameborder="0" height="360" src="https://www.youtube.com/embed/4EOdCGVNx4w" style="position:absolute;top:0;left:0;width:100%;height:100%" width="640"></iframe></div>
-                <div class="youtube-embed-wrapper" style="position:relative;padding-bottom:56.25%;padding-top:30px;height:0;overflow:hidden"><iframe allowfullscreen="" frameborder="0" height="360" src="https://www.youtube.com/embed/4EOdCGVNx4w" style="position:absolute;top:0;left:0;width:100%;height:100%" width="640"></iframe></div>
+                @foreach($Medias as $media)
+                <a href="{{route('media', ['slug' => $media->url])}}"><img src="{{$media->youtube_img}}" alt=""></a>
+                @endforeach
             </div>
         </div>
     </div>

@@ -6,6 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "alaouy/youtube": "^2.1",
         "alexusmai/ruslug": "^0.6.0",
         "chencha/share": "^5.2",
         "falur/laravel-breadcrumbs": "^1.0",

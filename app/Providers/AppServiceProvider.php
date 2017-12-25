@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use Alaouy\Youtube\Facades\Youtube;
 use App\BottomMenu;
 use App\Channel;
 use App\LeftMenu;
+use App\Media;
 use App\News;
 use App\Page;
 use App\ThisInt;
@@ -29,6 +31,11 @@ class AppServiceProvider extends ServiceProvider
         });
         Channel::saving(function ($channel) {
             return $channel->slug();
+        });
+        Media::saving(function ($media) {
+            $media->youtube_id = Youtube::parseVidFromURL($media->youtube_url);
+            $media->youtube_img = Youtube::getVideoInfo($media->youtube_id)->snippet->thumbnails->maxres->url;
+            return $media->slug();
         });
         Page::saving(function ($page) {
             if(!empty($page->left_menu)){
