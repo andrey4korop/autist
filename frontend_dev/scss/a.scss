@@ -655,6 +655,22 @@ ul#pagination{
       background: #ffffff;
     }
   }
+  .books{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    .book{
+      @include size(3);
+      margin: 20px 0;
+      text-align: center;
+      font-size: 21px;
+      line-height: 25px;
+      font-weight: 500;
+      p {
+        color: #161922 !important;
+      }
+    }
+  }
   .forum-content{
     .channel{
       margin: 25px 0;

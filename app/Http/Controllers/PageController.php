@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Blog;
+use App\CategoryBook;
 use App\Channel;
 use App\Media;
 use App\News;
@@ -21,6 +22,7 @@ class PageController extends Controller
         $data['ThisInt'] = ThisInt::limit(1)->orderBy('created_at','desc')->first();
         $data['Channels'] = Channel::all();
         $data['Medias'] = Media::all();
+        $data['CategoryBook'] = CategoryBook::all();
         return view('main', $data);
     }
 

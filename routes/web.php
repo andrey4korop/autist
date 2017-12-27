@@ -25,6 +25,8 @@ Route::get('vazlivo/', 'ThisIntController@index')->name('vazlivoAll');
 Route::get('vazlivo/{url}', 'ThisIntController@vazlivo')->name('vazlivo');
 Route::get('media/', 'MediaController@index')->name('mediaAll');
 Route::get('media/{url}', 'MediaController@media')->name('media');
+Route::get('books/', 'BooksController@index')->name('booksAll');
+Route::get('books/{url}', 'BooksController@books')->name('books');
 
 Route::post('comment', ['uses' => 'CommentController@store', 'as' => 'comment']);
 Auth::routes();

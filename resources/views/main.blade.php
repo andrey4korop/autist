@@ -108,12 +108,13 @@
         <h1>ПОСІБНИКИ</h1>
         <p>для завантаження натисніть на одну з наступних категорій</p>
         <div class="block">
+            @foreach($CategoryBook as $Book)
             <div class="col-6">
-                <img src="https://autism.ua/wp-content/uploads/otwbm/tmb/animirovannaya-zhizn-life-animated-2016-smotret-onlayn_1510149720_460X250_c_c_1_FFFFFF.jpg" alt="">
+                <a href="{{route('books', ['url' => $Book->url])}}">
+                    <img src="https://autism.ua/wp-content/uploads/otwbm/tmb/animirovannaya-zhizn-life-animated-2016-smotret-onlayn_1510149720_460X250_c_c_1_FFFFFF.jpg" alt="">
+                </a>
             </div>
-            <div class="col-6">
-                <img src="https://autism.ua/wp-content/uploads/otwbm/tmb/animirovannaya-zhizn-life-animated-2016-smotret-onlayn_1510149720_460X250_c_c_1_FFFFFF.jpg" alt="">
-            </div>
+            @endforeach
         </div>
     </div>
     <div class="block calendar">
