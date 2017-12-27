@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Blog;
 use App\CategoryBook;
 use App\Channel;
+use App\Event;
 use App\Media;
 use App\News;
 use App\ThisInt;
@@ -23,6 +24,8 @@ class PageController extends Controller
         $data['Channels'] = Channel::all();
         $data['Medias'] = Media::all();
         $data['CategoryBook'] = CategoryBook::all();
+        $events = Event::all();
+        $data['calendar'] = \Calendar::addEvents($events);
         return view('main', $data);
     }
 

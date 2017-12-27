@@ -7,6 +7,8 @@
     <link href="https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700|Roboto+Condensed:300,400,700|Roboto:300,400,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
     <link rel="icon" href="/img/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" type="text/css" href="/css/a.css">
+    <link rel="stylesheet" type="text/css" href="/css/fullcalendar.min.css">
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 
@@ -19,6 +21,10 @@
     <script type="text/javascript" src="{{asset('comments/js')}}/comment-scripts.js"></script>
     <script src="/js/tinymce/tinymce.min.js"></script>
     <script src="/js/slick/slick.min.js"></script>
+    <script src="/js/fullcalendar/moment.min.js"></script>
+    <script src="/js/fullcalendar/fullcalendar.js"></script>
+    <script src="/js/fullcalendar/uk.js"></script>
+
 
 
 </head>

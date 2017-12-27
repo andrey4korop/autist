@@ -27,6 +27,7 @@ Route::get('media/', 'MediaController@index')->name('mediaAll');
 Route::get('media/{url}', 'MediaController@media')->name('media');
 Route::get('books/', 'BooksController@index')->name('booksAll');
 Route::get('books/{url}', 'BooksController@books')->name('books');
+Route::post('subscribe', ['uses' => 'SubscribeController@create', 'as' => 'subscribe']);
 
 Route::post('comment', ['uses' => 'CommentController@store', 'as' => 'comment']);
 Auth::routes();

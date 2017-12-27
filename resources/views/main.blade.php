@@ -76,16 +76,17 @@
                 <a href=""><img src="img/img2.jpg" alt=""></a>
                 <a href=""><img src="img/img2.jpg" alt=""></a>
             </div>
-            <div class="podpiska">
+            <form action="{{route('subscribe')}}" method="post" class="podpiska">
+                {{ csrf_field()}}
                 <p class="pre_h">ОФОРМИТИ ПІДПИСКУ</p>
                 <h1>НА РОЗСИЛКУ НОВИН</h1>
                 <p>При оформленні пидписки, ми будемо відсилати оформлену збірку новин та статей на вашу почтову скриньку.</p>
                 <p class="label">Введіть ФІО</p>
-                <input type="text">
+                <input type="text" name="name">
                 <p class="label">Введіть свій e-mail *</p>
-                <input type="text">
+                <input type="text" name="email">
                 <input type="submit" value="Оформити підписку">
-            </div>
+            </form>
         </div>
         <div class="col-6 block2_right">
             <h1>БЛОГ</h1>
@@ -121,7 +122,10 @@
         <p class="pre_h">ПЕРЕГЛЯНЬТЕ НАШ КАЛЕНДАР</p>
         <h1>АНОНСІВ</h1>
         <p>ви також маєте можливість записатись</p>
-        <div class="calendar_block">/*Calendar*/</div>
+        <div class="calendar_block">
+            {!! $calendar->calendar() !!}
+            {!! $calendar->script() !!}
+        </div>
     </div>
     <div class="block block_forum">
         <h1>ФОРУМ</h1>

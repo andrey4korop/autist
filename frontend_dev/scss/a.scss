@@ -555,8 +555,10 @@ ul#pagination{
     }
     .calendar_block{
       width: 100%;
-      height: 500px;
-      background: #CCCCCC;
+      margin-top: 20px;
+      .fc-title {
+        color: #fff;
+      }
     }
   }
   .block_forum{
