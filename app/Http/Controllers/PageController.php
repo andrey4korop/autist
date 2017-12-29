@@ -35,4 +35,8 @@ class PageController extends Controller
         return view('page', $data);
 
     }
+    public function register_please(){
+        $data['title'] = 'Зареєструйтеся будь ласка';
+        return view('unlogin', $data);
+    }
 }

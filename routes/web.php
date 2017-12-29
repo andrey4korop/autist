@@ -11,27 +11,32 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});
-*/
+//Страници
 Route::get('/', 'PageController@index');
 Route::get('page/{url?}', 'PageController@page')->name('page');
+Route::get('register_please/', 'PageController@register_please')->name('register_please');
+//Блог
 Route::get('blog/', 'BlogController@index')->name('blogAll');
 Route::get('blog/{url}', 'BlogController@blog')->name('blog');
+//Новости
 Route::get('news/', 'NewsController@index')->name('newAll');
 Route::get('new/{url}', 'NewsController@new')->name('new');
+//Це важливо
 Route::get('vazlivo/', 'ThisIntController@index')->name('vazlivoAll');
 Route::get('vazlivo/{url}', 'ThisIntController@vazlivo')->name('vazlivo');
+//Видео
 Route::get('media/', 'MediaController@index')->name('mediaAll');
 Route::get('media/{url}', 'MediaController@media')->name('media');
+//Книги
 Route::get('books/', 'BooksController@index')->name('booksAll');
 Route::get('books/{url}', 'BooksController@books')->name('books');
+//Подписка
 Route::post('subscribe', ['uses' => 'SubscribeController@create', 'as' => 'subscribe']);
-
+//Коментарии
 Route::post('comment', ['uses' => 'CommentController@store', 'as' => 'comment']);
+//Авторизация
 Auth::routes();
-
+//Форум
 Route::group(['prefix' => 'forum'], function () {
     Route::get('/', 'ThreadsController@index')->name('forum');
     Route::get('/{channel}', 'ThreadsController@channel')->name('channel');
