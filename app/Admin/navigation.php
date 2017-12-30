@@ -29,6 +29,8 @@ use SleepingOwl\Admin\Navigation\Page;
  AdminSection::addMenuPage(\App\Media::class)->setIcon('fa fa-newspaper-o');
  AdminSection::addMenuPage(\App\Book::class)->setIcon('fa fa-newspaper-o');
  AdminSection::addMenuPage(\App\Event::class)->setIcon('fa fa-newspaper-o');
+ AdminSection::addMenuPage(\App\DocumentSubCategory::class)->setIcon('fa fa-newspaper-o');
+ AdminSection::addMenuPage(\App\Document::class)->setIcon('fa fa-newspaper-o');
 
 return [
     [

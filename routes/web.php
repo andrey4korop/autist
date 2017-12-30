@@ -15,6 +15,8 @@
 Route::get('/', 'PageController@index');
 Route::get('page/{url?}', 'PageController@page')->name('page');
 Route::get('register_please/', 'PageController@register_please')->name('register_please');
+Route::get('document/', 'PageController@document')->name('document');
+Route::get('document/{Category}/{subCategory?}', 'PageController@documenttt')->name('documenttt');
 //Блог
 Route::get('blog/', 'BlogController@index')->name('blogAll');
 Route::get('blog/{url}', 'BlogController@blog')->name('blog');

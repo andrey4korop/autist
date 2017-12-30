@@ -5,6 +5,7 @@ namespace App\Providers;
 use Alaouy\Youtube\Facades\Youtube;
 use App\BottomMenu;
 use App\Channel;
+use App\DocumentSubCategory;
 use App\LeftMenu;
 use App\Media;
 use App\News;
@@ -58,6 +59,10 @@ class AppServiceProvider extends ServiceProvider
             return $bottomMenu;
         });
         ThisInt::saving(function ($page) {
+            return $page->slug();
+        });
+        DocumentSubCategory::saving(function ($page) {
+            $page->document_type_id = 1;
             return $page->slug();
         });
     }
