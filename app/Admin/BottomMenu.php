@@ -2,7 +2,7 @@
 use App\BottomMenu;
 use SleepingOwl\Admin\Model\ModelConfiguration;
 AdminSection::registerModel(BottomMenu::class, function (ModelConfiguration $model) {
-    $model->setTitle('BottomMenu')->setAlias('BottomMenu');
+    $model->setTitle('Нижнє меню')->setAlias('BottomMenu');
     $model->onDisplay(function () {
         $display = AdminDisplay::tree();
         //$display->with('title');
@@ -17,15 +17,15 @@ AdminSection::registerModel(BottomMenu::class, function (ModelConfiguration $mod
     $model->onCreateAndEdit(function($id = null) {
         $form = AdminForm::panel();
         $form->setItems(
-            AdminFormElement::select('page_id', 'page_id')->setModelForOptions(\App\Page::class, 'id')
+            AdminFormElement::select('page_id', 'Сторінка')->setModelForOptions(\App\Page::class, 'id')
                 ->setDisplay('title')
 
         );
         $form
             ->getButtons()
-            ->setSaveButtonText('Сохранить')
-            ->setDeleteButtonText('Удалить')
-            ->setCancelButtonText('Отменить');
+            ->setSaveButtonText('Зберегти')
+            ->setDeleteButtonText('Видалити')
+            ->setCancelButtonText('Відмінити');
         return $form;
     });
 
@@ -33,13 +33,13 @@ AdminSection::registerModel(BottomMenu::class, function (ModelConfiguration $mod
     $model->setMessageOnCreate('Сторінка створена');
 
     // Редактирование записи
-    $model->setMessageOnUpdate('Сторінка обновлена');
+    $model->setMessageOnUpdate('Сторінка оновлена');
 
     // Удаление записи
     $model->setMessageOnDelete('Сторінка видалена');
 
     // Восстановление записи
-    $model->setMessageOnRestore('Сторінка востаовлена');
+    $model->setMessageOnRestore('Сторінка відновлена');
 
 
 });

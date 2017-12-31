@@ -2,15 +2,13 @@
 use App\Document;
 use SleepingOwl\Admin\Model\ModelConfiguration;
 AdminSection::registerModel(Document::class, function (ModelConfiguration $model) {
-    $model->setTitle('Document')->setAlias('Document');
+    $model->setTitle('Документи')->setAlias('Document');
     $model->onDisplay(function () {
         $display = AdminDisplay::table()->paginate(10);
         $display->setHtmlAttribute('class', 'table-info table-hover');
         $display->setColumns([
-            AdminColumn::link('title')->setLabel('Заголовок')->setWidth('300px'),
-            AdminColumn::datetime('created_at')->setLabel('Создан'),
-            AdminColumn::datetime('updated_at')->setLabel('Изменён'),
-            //AdminColumn::text('content')->setLabel('Текст')->setWidth('500px'),
+            AdminColumn::link('title')->setLabel('Заголовок')->setWidth('500px'),
+            AdminColumn::datetime('created_at')->setLabel('Створений'),
         ]);
         return $display;
     });
@@ -19,10 +17,10 @@ AdminSection::registerModel(Document::class, function (ModelConfiguration $model
         $form = AdminForm::panel();
         $form->setItems(
             AdminFormElement::text('title', 'Заголовок'),
-            AdminFormElement::file('path_file', 'path_file'),
-            AdminFormElement::select('category_type_id', 'category_type_id')
+            AdminFormElement::file('path_file', 'Файл'),
+            AdminFormElement::select('category_type_id', 'Категорія')
                 ->setModelForOptions(\App\DocumentType::class, 'title'),
-            AdminFormElement::dependentselect('sub_category_type_id', 'sub_category_type_id')
+            AdminFormElement::dependentselect('sub_category_type_id', 'Підкатегорія')
                 ->setModelForOptions(\App\DocumentSubCategory::class, 'title')
                 ->setDataDepends(['category_type_id'])
                 ->setLoadOptionsQueryPreparer(function($item, $query) {
@@ -30,9 +28,9 @@ AdminSection::registerModel(Document::class, function (ModelConfiguration $model
                         }));
         $form
             ->getButtons()
-            ->setSaveButtonText('Сохранить')
-            ->setDeleteButtonText('Удалить')
-            ->setCancelButtonText('Отменить');
+            ->setSaveButtonText('Зберегти')
+            ->setDeleteButtonText('Видалити')
+            ->setCancelButtonText('Відмінити');
         return $form;
     });
 
@@ -40,13 +38,13 @@ AdminSection::registerModel(Document::class, function (ModelConfiguration $model
     $model->setMessageOnCreate('Сторінка створена');
 
     // Редактирование записи
-    $model->setMessageOnUpdate('Сторінка обновлена');
+    $model->setMessageOnUpdate('Сторінка оновлена');
 
     // Удаление записи
     $model->setMessageOnDelete('Сторінка видалена');
 
     // Восстановление записи
-    $model->setMessageOnRestore('Сторінка востаовлена');
+    $model->setMessageOnRestore('Сторінка відновлена');
 
 
 });

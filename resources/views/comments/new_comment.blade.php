@@ -8,11 +8,11 @@
 		<div class="comment-meta commentmetadata">
 			<div class="intro">
 				<div class="commentDate">
-					только что добавлен                     
+					тільки що добавлено
 				</div>
 			</div>
 			<div class="comment-body">
-				<p>{{ $data['text'] }}</p>
+				<p>{!! $data['text'] !!}</p>
 			</div>
 		</div>
 	</div>

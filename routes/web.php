@@ -38,6 +38,12 @@ Route::post('subscribe', ['uses' => 'SubscribeController@create', 'as' => 'subsc
 Route::post('comment', ['uses' => 'CommentController@store', 'as' => 'comment']);
 //Авторизация
 Auth::routes();
+Route::get('/logout', function()
+{
+    Auth::logout();
+    Session::flush();
+    return Redirect::to('/');
+})->name('logout');
 //Форум
 Route::group(['prefix' => 'forum'], function () {
     Route::get('/', 'ThreadsController@index')->name('forum');

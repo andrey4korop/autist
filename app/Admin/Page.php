@@ -2,15 +2,13 @@
 use App\Page;
 use SleepingOwl\Admin\Model\ModelConfiguration;
 AdminSection::registerModel(Page::class, function (ModelConfiguration $model) {
-    $model->setTitle('Страници')->setAlias('page');
+    $model->setTitle('Сторінки')->setAlias('page');
     $model->onDisplay(function () {
         $display = AdminDisplay::table()->paginate(10);
         $display->setHtmlAttribute('class', 'table-info table-hover');
         $display->setColumns([
-            AdminColumn::link('title')->setLabel('Заголовок')->setWidth('300px'),
-            AdminColumn::datetime('created_at')->setLabel('Создан'),
-            AdminColumn::datetime('updated_at')->setLabel('Изменён'),
-            //AdminColumn::text('content')->setLabel('Текст')->setWidth('500px'),
+            AdminColumn::link('title')->setLabel('Заголовок')->setWidth('500px'),
+            AdminColumn::datetime('created_at')->setLabel('Створений'),
         ]);
         return $display;
     });
@@ -19,17 +17,15 @@ AdminSection::registerModel(Page::class, function (ModelConfiguration $model) {
         $form = AdminForm::panel();
         $form->setItems(
             AdminFormElement::text('title', 'Заголовок'),
-            //AdminFormElement::text('url', 'url'),
-            AdminFormElement::text('author_id', 'author_id'),
             AdminFormElement::wysiwyg('content', 'Текст')->setEditor('ckeditor'),
-            AdminFormElement::wysiwyg('custom_css', 'custom_css')->setEditor('ckeditor'),
-            AdminFormElement::wysiwyg('custom_js', 'custom_js')->setEditor('ckeditor')
+            AdminFormElement::textarea('custom_css', 'Власні CSS'),
+            AdminFormElement::textarea('custom_js', 'Власні JavaScript')
         );
         $form
             ->getButtons()
-            ->setSaveButtonText('Сохранить')
-            ->setDeleteButtonText('Удалить')
-            ->setCancelButtonText('Отменить');
+            ->setSaveButtonText('Зберегти')
+            ->setDeleteButtonText('Видалити')
+            ->setCancelButtonText('Відмінити');
         return $form;
     });
 
@@ -37,13 +33,13 @@ AdminSection::registerModel(Page::class, function (ModelConfiguration $model) {
     $model->setMessageOnCreate('Сторінка створена');
 
     // Редактирование записи
-    $model->setMessageOnUpdate('Сторінка обновлена');
+    $model->setMessageOnUpdate('Сторінка оновлена');
 
     // Удаление записи
     $model->setMessageOnDelete('Сторінка видалена');
 
     // Восстановление записи
-    $model->setMessageOnRestore('Сторінка востаовлена');
+    $model->setMessageOnRestore('Сторінка відновлена');
 
 
 });

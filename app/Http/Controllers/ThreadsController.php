@@ -16,25 +16,25 @@ class ThreadsController extends Controller
     {
         $this->breadcrumbs = new Breadcrumbs();
         $this->breadcrumbs->add('Главная', '/');
-        $this->breadcrumbs->add('forum', route('forum'));
+        $this->breadcrumbs->add('Форум', route('forum'));
     }
     public function index(){
 
-        $data['title'] = 'forum';
+        $data['title'] = 'Форум';
         $data['breadcrumbs'] = $this->breadcrumbs;
         $data['channels'] = Channel::with('threads')->get();
         return view('forum.index', $data);
     }
     public function channel(Channel $channel){
-        $this->breadcrumbs->add('forum', route('channel', ['channel' => $channel->slug]));
-        $data['title'] = 'forum';
+        $this->breadcrumbs->add($channel->name, route('channel', ['channel' => $channel->slug]));
+        $data['title'] = 'Форум';
         $data['breadcrumbs'] = $this->breadcrumbs;
         $data['channel'] = $channel;
         return view('forum.channel', $data);
     }
     public function threadscreate(Channel $channel){
         $this->breadcrumbs->add($channel->name, route('channel', ['channel' => $channel->slug]));
-        $data['title'] = 'forum';
+        $data['title'] = 'Форум';
         $data['breadcrumbs'] = $this->breadcrumbs;
         $data['channel'] = $channel;
         return view('forum.createthread', $data);
@@ -54,7 +54,7 @@ class ThreadsController extends Controller
         $this->breadcrumbs->add($channel->name, route('channel', ['channel' => $channel->slug]));
         $this->breadcrumbs->add($thread->title, route('replies', ['channel' => $channel->slug, 'thread' => $thread->id]));
 
-        $data['title'] = 'forum';
+        $data['title'] = 'Форум';
         $data['breadcrumbs'] = $this->breadcrumbs;
 
         $data['threads'] = $thread;

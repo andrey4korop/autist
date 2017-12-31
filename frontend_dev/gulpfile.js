@@ -64,8 +64,8 @@ gulp.task('sass', function(){
 gulp.task('serve', ['sass'], function() {
 
     browserSync.init({
-        //server: "./"
-        proxy: "autist/"
+        server: "./"
+        //proxy: "autist/"
     });
 
     gulp.watch('./scss/a.scss', ['sass'])

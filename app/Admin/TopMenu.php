@@ -2,7 +2,7 @@
 use App\TopMenu;
 use SleepingOwl\Admin\Model\ModelConfiguration;
 AdminSection::registerModel(TopMenu::class, function (ModelConfiguration $model) {
-    $model->setTitle('TopMenu')->setAlias('TopMenu');
+    $model->setTitle('Верхнє меню')->setAlias('TopMenu');
     $model->onDisplay(function () {
         $display = AdminDisplay::tree();
         //$display->with('title');
@@ -17,15 +17,15 @@ AdminSection::registerModel(TopMenu::class, function (ModelConfiguration $model)
     $model->onCreateAndEdit(function($id = null) {
         $form = AdminForm::panel();
         $form->setItems(
-            AdminFormElement::select('page_id', 'page_id')->setModelForOptions(\App\Page::class, 'id')
+            AdminFormElement::select('page_id', 'Сторінка')->setModelForOptions(\App\Page::class, 'id')
                 ->setDisplay('title')
 
         );
         $form
             ->getButtons()
-            ->setSaveButtonText('Сохранить')
-            ->setDeleteButtonText('Удалить')
-            ->setCancelButtonText('Отменить');
+            ->setSaveButtonText('Зберегти')
+            ->setDeleteButtonText('Видалити')
+            ->setCancelButtonText('Відмінити');
         return $form;
     });
 
@@ -33,13 +33,13 @@ AdminSection::registerModel(TopMenu::class, function (ModelConfiguration $model)
     $model->setMessageOnCreate('Сторінка створена');
 
     // Редактирование записи
-    $model->setMessageOnUpdate('Сторінка обновлена');
+    $model->setMessageOnUpdate('Сторінка оновлена');
 
     // Удаление записи
     $model->setMessageOnDelete('Сторінка видалена');
 
     // Восстановление записи
-    $model->setMessageOnRestore('Сторінка востаовлена');
+    $model->setMessageOnRestore('Сторінка відновлена');
 
 
 });

@@ -35,7 +35,19 @@
     </div>
     <nav>
         <ul>
+            
             @each('vendor.menu.left_menu', App\LeftMenu::with('page')->orderBy('_lft')->get()->toTree(), 'menu')
+
+            @if(Auth::check())
+                @if(Auth::user()->isAdmin)
+                    <li class="rootMenu">
+                        <a href="/admin">Admin</a>
+                    </li>
+                @endif
+                <li class="rootMenu">
+                    <a href="{{route('logout')}}">Вийти</a>
+                </li>
+            @endif
             <!--<li><a href="" class="current">Головна</a></li>
             <li><a href="">Аутизм</a></li>
             <li><a href="">Виявлення</a></li>
@@ -78,6 +90,7 @@
             <p>© 2017 Autism.ua | Всі права захищені</p>
             <nav class="bottom">
                 @include('vendor.menu.bottom_menu')
+
                 {{--<a href="#">Про Нас</a><p>|</p>
                 <a href="#">Медiа</a><p>|</p>
                 <a href="#">Зi ЗМI</a><p>|</p>
@@ -102,10 +115,15 @@
 </div>
 <script>
 
-    $(document).ready(function () {
-        tinymce.init({
+   // $(document).ready(function () {
+       var ed=  tinymce.init({
             selector:'textarea',
             language: 'uk_UA',
+            setup: function (editor) {
+                editor.on('change', function () {
+                    tinymce.triggerSave();
+                });
+            },
             plugins: [
                 "advlist autolink link image lists charmap hr anchor pagebreak",
                 "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
@@ -128,7 +146,7 @@
             fade: true,
             cssEase: 'linear'
         });
-    })
+   // })
 </script>
 </body>
 </html>

@@ -1,20 +1,20 @@
 @extends('layouts.lay')
 
 @section('content')
-    <h1 class="title">Forum</h1>
+    <h1 class="title">{{$title}}</h1>
     {!! $breadcrumbs->render() !!}
 
     <div class="forum-content">
         <div class="reply">
             <div class="author_block">
-                <p class="author_name">{{$threads->user_id}}</p>
+                <p class="author_name">{{$threads->author->name}}</p>
                 <img src="http://autyzmwpolsce.pl/img/avatars/default.png" alt="">
-                <p>Зарегестирован {{$threads->user_id}}</p>
-                <p>postow {{$threads->user_id}}</p>
+                <p>Заеєстрований {{$threads->author->created_at->format('d.m.Y')}}</p>
+                <p>Постів {{$threads->author->countPost()}}</p>
             </div>
             <div class="reply_content">
                 <div class="forum_date">
-                    <p>{{$threads->created_at->format('d-m-Y H:m:s')}}</p>
+                    <p>{{$threads->created_at->format('d.m.Y H:m:s')}}</p>
                     {{--<a href="">[Цитировать]</a>--}}
                 </div>
                 <div class="forum_text">
@@ -25,14 +25,14 @@
         @forelse($replies as $replie)
         <div class="reply">
             <div class="author_block">
-                <p class="author_name">{{$replie->user_id}}</p>
+                <p class="author_name">{{$replie->author->name}}</p>
                 <img src="http://autyzmwpolsce.pl/img/avatars/default.png" alt="">
-                <p>Зарегестирован {{$replie->user_id}}</p>
-                <p>postow {{$replie->user_id}}</p>
+                <p>Заеєстрований {{$replie->author->created_at->format('d.m.Y')}}</p>
+                <p>Постів {{$replie->author->countPost()}}</p>
             </div>
             <div class="reply_content">
                 <div class="forum_date">
-                    <p>{{$replie->created_at->format('d-m-Y H:m:s')}}</p>
+                    <p>{{$replie->created_at->format('d.m.Y H:m:s')}}</p>
                     {{--<a href="">[Цитировать]</a>--}}
                 </div>
                 <div class="forum_text">
@@ -92,6 +92,5 @@
 
         <input type="submit">
         {{ csrf_field() }}
-        <input type="text" name="user_id">
     </form>
 @endsection

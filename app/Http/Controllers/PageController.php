@@ -15,6 +15,7 @@ use App\Page;
 use App\LeftMenu;
 use App\DocumentType;
 use Falur\Breadcrumbs\Breadcrumbs;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {

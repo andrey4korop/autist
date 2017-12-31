@@ -18,4 +18,8 @@ class Page extends Model
     {
         return $this->belongsTo('App\LeftMenu', 'id', 'page_id');
     }
+    public function author()
+    {
+        return $this->belongsTo('App\User', 'author_id', 'id');
+    }
 }

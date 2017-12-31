@@ -1,7 +1,7 @@
 @extends('layouts.lay')
 
 @section('content')
-    <h1 class="title">Forum</h1>
+    <h1 class="title">{{$title}}</h1>
     {!! $breadcrumbs->render() !!}
     <div class="forum-content">
         <div class="channel">
@@ -14,14 +14,10 @@
                     <p style="margin-right: 10px;">Заголовок: </p>
                     <input type="text" name="title">
                 </div>
-                <p class="marg">Текст повыдомлення: </p>
+                <p class="marg">Текст повідомлення: </p>
                 <textarea name="body" id="" cols="30" rows="10"></textarea>
-
-
                 <input type="submit" value="Створити">
                 {{ csrf_field() }}
-
-                <input type="text" name="user_id">
             </form>
         </div>
     </div>

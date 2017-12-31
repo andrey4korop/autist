@@ -95,8 +95,8 @@
                 @foreach($blogs as $blog)
                 <div class="blog">
                     <a href="{{route('blog',['url' => $blog->url])}}" class="title">{{$blog->title}}</a>
-                    <a href="" class="author">{{$blog->author_id}}</a>
-                    <a href="" class="date">{{$blog->created_at->format('d.m.Y')}}</a>
+                    <a class="author">{{$blog->author->name}}</a>
+                    <a class="date">{{$blog->created_at->format('d.m.Y')}}</a>
                     <img src="{{$blog->main_img}}" alt="">
                     <p class="description">{{substr(rtrim(substr(strip_tags($blog->content), 0, 400), "!,.-"), 0, strrpos(rtrim(substr(strip_tags($blog->content), 0, 400), "!,.-"), ' '))}}...</p>
                     <a href="{{route('blog',['url' => $blog->url])}}" class="read_more">Читати далi</a>
@@ -109,13 +109,18 @@
         <h1>ПОСІБНИКИ</h1>
         <p>для завантаження натисніть на одну з наступних категорій</p>
         <div class="block">
-            @foreach($CategoryBook as $Book)
+
             <div class="col-6">
-                <a href="{{route('books', ['url' => $Book->url])}}">
-                    <img src="https://autism.ua/wp-content/uploads/otwbm/tmb/animirovannaya-zhizn-life-animated-2016-smotret-onlayn_1510149720_460X250_c_c_1_FFFFFF.jpg" alt="">
+                <a href="{{route('books', ['url' => $CategoryBook->first()->url])}}">
+                    <img src="/img/pos1.jpg" alt="">
                 </a>
             </div>
-            @endforeach
+            <div class="col-6">
+                <a href="{{route('books', ['url' => $CategoryBook->last()->url])}}">
+                    <img src="/img/pos2.jpg" alt="">
+                </a>
+            </div>
+
         </div>
     </div>
     <div class="block calendar">

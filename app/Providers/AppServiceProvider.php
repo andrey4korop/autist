@@ -10,10 +10,13 @@ use App\LeftMenu;
 use App\Media;
 use App\News;
 use App\Page;
+use App\Reply;
 use App\ThisInt;
+use App\Thread;
 use App\TopMenu;
 use Illuminate\Support\ServiceProvider;
 use App\Blog;
+use Illuminate\Support\Facades\Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,20 +28,24 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Blog::saving(function ($blog) {
+            $blog->author()->associate(Auth::user());
             return $blog->slug();
         });
         News::saving(function ($new) {
+            $new->author()->associate(Auth::user());
             return $new->slug();
         });
         Channel::saving(function ($channel) {
             return $channel->slug();
         });
         Media::saving(function ($media) {
+            $media->author()->associate(Auth::user());
             $media->youtube_id = Youtube::parseVidFromURL($media->youtube_url);
             $media->youtube_img = Youtube::getVideoInfo($media->youtube_id)->snippet->thumbnails->maxres->url;
             return $media->slug();
         });
         Page::saving(function ($page) {
+            $page->author()->associate(Auth::user());
             if(!empty($page->left_menu)){
                 $left = $page->left_menu;
                 $left->title = $page->title;
@@ -59,11 +66,20 @@ class AppServiceProvider extends ServiceProvider
             return $bottomMenu;
         });
         ThisInt::saving(function ($page) {
+            $page->author()->associate(Auth::user());
             return $page->slug();
         });
         DocumentSubCategory::saving(function ($page) {
             $page->document_type_id = 1;
             return $page->slug();
+        });
+        Thread::saving(function ($page) {
+            $page->author()->associate(Auth::user());
+            return true;
+        });
+        Reply::saving(function ($page) {
+            $page->author()->associate(Auth::user());
+            return true;
         });
     }
 

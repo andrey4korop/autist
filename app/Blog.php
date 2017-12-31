@@ -18,4 +18,8 @@ class Blog extends Model
     {
         return $this->morphMany('App\Comment', 'commentable');
     }
+    public function author()
+    {
+        return $this->belongsTo('App\User', 'author_id', 'id');
+    }
 }
