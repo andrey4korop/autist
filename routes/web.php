@@ -53,3 +53,9 @@ Route::group(['prefix' => 'forum'], function () {
     Route::get('/{channel}/{thread}', 'ThreadsController@replies')->name('replies');
     Route::post('/{channel}/{thread}', 'ThreadsController@repliesCreate')->name('repliesCreate');
 });
+Route::get('ads/{ads}', function (\App\Ads $ads){
+    return Ads::redirect($ads);
+})->name('ads');
+Route::get('test', function (){
+   return Ads::render();
+});

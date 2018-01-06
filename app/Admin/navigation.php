@@ -92,5 +92,15 @@ return [
                 ->setIcon('fa fa-group')
                 ->setPriority(100)
         ]
-    ]
+    ],
+    [
+        'title' => 'ADS',
+        'icon' => 'fa fa-group',
+        'pages' => [
+            (new Page(\App\Ads::class))
+                ->setIcon('fa fa-user')
+                ->setPriority(0)
+
+        ]
+]
 ];

@@ -171,6 +171,7 @@ return [
         Chencha\Share\ShareServiceProvider::class,
         Falur\Breadcrumbs\Providers\ServiceProvider::class,
         Alaouy\Youtube\YoutubeServiceProvider::class,
+        App\Providers\AdsServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -233,6 +234,7 @@ return [
     'Breadcrumbs' => Falur\Breadcrumbs\Facades\Breadcrumbs::class,
     'BreadcrumbsFactory' => Falur\Breadcrumbs\Facades\BreadcrumbsFactory::class,
         'Youtube' => Alaouy\Youtube\Facades\Youtube::class,
+        'Ads' => \App\Helpers\Ads\Ads::class,
     ],
 
 ];

@@ -8,11 +8,7 @@
         <a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a>
         <a href=""><i class="fa fa-rss" aria-hidden="true"></i></a>
     </div>
-    <div class="ads">
-        <div class="ads_content"><img src="/img/ads.png" alt=""></div>
-        <div class="ads_content"><img src="/img/ads.png" alt=""></div>
-        <div class="ads_content"><img src="/img/ads.png" alt=""></div>
-    </div>
+    {!! Ads::render() !!}
     <div class="top_menu">
         @each('vendor.menu.top_menu', App\TopMenu::with('page')->orderBy('_lft')->get(), 'menu')
     </div>
