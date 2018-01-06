@@ -7,11 +7,18 @@ AdminSection::registerModel(Ads::class, function (ModelConfiguration $model) {
         $display = AdminDisplay::table()->paginate(10);
         $display->setHtmlAttribute('class', 'table-info table-hover');
         $display->setColumns([
-            AdminColumn::link('title')->setLabel('Заголовок')->setWidth('500px'),
-            AdminColumn::image('img_path')->setLabel('Зображення')->setWidth('150px'),
-            AdminColumn::text('count_see')->setLabel('count_see')->setWidth('150px'),
-            AdminColumn::text('count_click')->setLabel('count_click')->setWidth('150px'),
-            AdminColumn::datetime('created_at')->setLabel('Створений'),
+            AdminColumn::link('title')->setLabel('Заголовок')->setWidth('300px'),
+            AdminColumn::image('img_path')->setLabel('Зображення')->setWidth('100px'),
+            AdminColumn::text('count_see')->setLabel('count_see')->setWidth('100px'),
+            AdminColumn::text('count_click')->setLabel('count_click')->setWidth('100px'),
+            AdminColumn::custom('действует', function(Ads $ads) {
+                return $ads->end_date&&$ads->end_date_on ? \Carbon\Carbon::now()->diffInDays( \Carbon\Carbon::parse($ads->end_date), false).' days' : '';
+            }),
+            AdminColumn::custom('see', function(Ads $ads) {
+                return ($ads->end_date > Carbon\Carbon::now() && $ads->end_date_on)||
+                    ($ads->see_on && $ads->see > $ads->count_see)||
+                    ($ads->click_on && $ads->click > $ads->count_click) ? '+' : '-';
+            }),
         ]);
         return $display;
     });
