@@ -29,4 +29,8 @@ class User extends Authenticatable
     public function countPost(){
         return $this->hasMany('App\Reply')->get()->count();
     }
+    public function profile()
+    {
+        return $this->hasOne('App\Profile');
+    }
 }

@@ -91,7 +91,7 @@
                 @foreach($blogs as $blog)
                 <div class="blog">
                     <a href="{{route('blog',['url' => $blog->url])}}" class="title">{{$blog->title}}</a>
-                    <a class="author">{{$blog->author->name}}</a>
+                    <a class="author"><img src="/{{$blog->author->profile->avatar}}">  {{$blog->author->name}}</a>
                     <a class="date">{{$blog->created_at->format('d.m.Y')}}</a>
                     <img src="{{$blog->main_img}}" alt="">
                     <p class="description">{{substr(rtrim(substr(strip_tags($blog->content), 0, 400), "!,.-"), 0, strrpos(rtrim(substr(strip_tags($blog->content), 0, 400), "!,.-"), ' '))}}...</p>

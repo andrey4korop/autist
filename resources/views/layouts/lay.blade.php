@@ -45,6 +45,9 @@
                     </li>
                 @endif
                 <li class="rootMenu">
+                    <a href="{{route('profile')}}">Profile</a>
+                </li>
+                <li class="rootMenu">
                     <a href="{{route('logout')}}">Вийти</a>
                 </li>
             @endif
@@ -148,5 +151,6 @@
         });
    // })
 </script>
+@stack('scripts')
 </body>
 </html>

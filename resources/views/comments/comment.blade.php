@@ -3,7 +3,7 @@
 <li id="li-comment-{{$item->id}}" class="comment">
 	<div id="comment-{{$item->id}}" class="comment-container">
 		<div class="comment-author vcard">
-			<img alt="" src="https://www.gravatar.com/avatar/{{md5($item->email)}}?d=mm&s=75" class="avatar" height="75" width="75" />
+			<img alt="" src="/{{$item->user->profile->avatar}}" class="avatar" height="75" width="75" />
 			<cite class="fn">{{$item->name}}</cite>                 
 		</div>
 		<!-- .comment-author .vcard -->

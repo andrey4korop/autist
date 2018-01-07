@@ -10,10 +10,13 @@ use App\LeftMenu;
 use App\Media;
 use App\News;
 use App\Page;
+use App\Profile;
 use App\Reply;
 use App\ThisInt;
 use App\Thread;
 use App\TopMenu;
+use App\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use App\Blog;
 use Illuminate\Support\Facades\Auth;
@@ -27,6 +30,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        /*DB::listen(function($query) {
+            dump($query->sql, $query->bindings, $query->time);
+        });*/
+        User::created(function ($user) {
+            $user->profile()->save(new Profile());
+            return true;
+        });
         Blog::saving(function ($blog) {
             $blog->author()->associate(Auth::user());
             return $blog->slug();

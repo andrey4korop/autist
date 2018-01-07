@@ -543,6 +543,9 @@ ul#pagination{
   .blog{
     @include col-6();
     margin-top: 15px;
+    .author img{
+      width: 24px;
+    }
   }
   .books_block{
     flex-direction: column;

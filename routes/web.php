@@ -56,6 +56,10 @@ Route::group(['prefix' => 'forum'], function () {
 Route::get('ads/{ads}', function (\App\Ads $ads){
     return Ads::redirect($ads);
 })->name('ads');
-Route::get('test', function (){
+//Profile
+Route::get('profile', 'ProfileController@index')->name('profile');
+Route::post('profile', 'ProfileController@save')->name('profile');
+
+/*Route::get('test', function (){
    return Ads::render();
-});
+});*/

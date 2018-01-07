@@ -8,7 +8,7 @@
         <div class="reply">
             <div class="author_block">
                 <p class="author_name">{{$threads->author->name}}</p>
-                <img src="http://autyzmwpolsce.pl/img/avatars/default.png" alt="">
+                <img src="/{{$threads->author->profile->avatar}}">
                 <p>Заеєстрований {{$threads->author->created_at->format('d.m.Y')}}</p>
                 <p>Постів {{$threads->author->countPost()}}</p>
             </div>
@@ -26,7 +26,7 @@
         <div class="reply">
             <div class="author_block">
                 <p class="author_name">{{$replie->author->name}}</p>
-                <img src="http://autyzmwpolsce.pl/img/avatars/default.png" alt="">
+                <img src="/{{$replie->author->profile->avatar}}">
                 <p>Заеєстрований {{$replie->author->created_at->format('d.m.Y')}}</p>
                 <p>Постів {{$replie->author->countPost()}}</p>
             </div>
