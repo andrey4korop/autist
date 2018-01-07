@@ -15,9 +15,21 @@ AdminSection::registerModel(Ads::class, function (ModelConfiguration $model) {
                 return $ads->end_date&&$ads->end_date_on ? \Carbon\Carbon::now()->diffInDays( \Carbon\Carbon::parse($ads->end_date), false).' days' : '';
             }),
             AdminColumn::custom('see', function(Ads $ads) {
-                return ($ads->end_date > Carbon\Carbon::now() && $ads->end_date_on)||
-                    ($ads->see_on && $ads->see > $ads->count_see)||
-                    ($ads->click_on && $ads->click > $ads->count_click) ? '+' : '-';
+                return (
+                    (
+                        ($ads->priority_end_date == 1 && $ads->end_date_on && $ads->end_date > Carbon\Carbon::now())
+                        || ($ads->priority_see == 1 && $ads->see_on && $ads->count_see < $ads->see)
+                        || ($ads->priority_click == 1 && $ads->click_on && $ads->count_click < $ads->click)
+                    )
+                    || (
+                        ($ads->priority_end_date != 1 && $ads->priority_see != 1 && $ads->priority_click != 1)
+                        && (
+                            ($ads->end_date_on && $ads->end_date > Carbon\Carbon::now())
+                            || ($ads->see_on && $ads->count_see < $ads->see)
+                            || ($ads->click_on && $ads->count_click < $ads->click)
+                        )
+                    )
+                )  ? '+' : '-';
             }),
         ]);
         return $display;
@@ -31,10 +43,13 @@ AdminSection::registerModel(Ads::class, function (ModelConfiguration $model) {
             AdminFormElement::text('url', 'url'),
             AdminFormElement::checkbox('end_date_on', 'end_date_on'),
             AdminFormElement::date('end_date', 'end_date'),
+            AdminFormElement::select('priority_end_date', 'priority_end_date', [1 => 1, 2 => 2]),
             AdminFormElement::checkbox('see_on', 'see_on'),
             AdminFormElement::number('see', 'see'),
+            AdminFormElement::select('priority_see', 'priority_see',[1 => 1, 2 => 2]),
             AdminFormElement::checkbox('click_on', 'click_on'),
-            AdminFormElement::number('click', 'click')
+            AdminFormElement::number('click', 'click'),
+            AdminFormElement::select('priority_click', 'priority_click', [1 => 1, 2 => 2])
         );
         $form
             ->getButtons()

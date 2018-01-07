@@ -25,18 +25,43 @@ class Ads
     }
     public static function render(){
         $ads= AdsModel::where(function ($query) {
-            $query->where('end_date_on', true)
-                ->where('end_date', '>', Carbon::now());
-        })->orWhere(function ($query) {
-            $query->where('see_on', true)
-                ->whereColumn('count_see', '<', 'see');
-        })->orWhere(function ($query) {
-            $query->where('click_on', true)
-                ->whereColumn('count_click', '<', 'click');
+            $query->where(function ($query) {
+                $query->where('priority_end_date', 1)
+                    ->where('end_date_on', true)
+                    ->where('end_date', '>', Carbon::now());
+            })->orWhere(function ($query) {
+                $query->where('priority_see', 1)
+                    ->where('see_on', true)
+                    ->whereColumn('count_see', '<', 'see');
+            })->orWhere(function ($query) {
+                $query->where('priority_click', 1)
+                    ->where('click_on', true)
+                    ->whereColumn('count_click', '<', 'click');
+            });
+        })
+        ->orWhere(function ($query) {
+            $query->where(function ($query) {
+                $query->where('priority_end_date', '<>', 1)
+                    ->where('priority_see', '<>', 1)
+                    ->where('priority_click', '<>', 1);
+            })
+                ->where(function ($query) {
+                    $query->orWhere(function ($query) {                       //Виполнения хотябы одного условия
+                        $query->where('end_date_on', true)
+                            ->where('end_date', '>', Carbon::now());
+                    })->orWhere(function ($query) {
+                        $query->where('see_on', true)
+                            ->whereColumn('count_see', '<', 'see');
+                    })->orWhere(function ($query) {
+                        $query->where('click_on', true)
+                            ->whereColumn('count_click', '<', 'click');
+                    });
+                });
         })
             ->inRandomOrder()
+            ->limit(3)
 
-        ->get()->random(3);
+        ->get();
         Ads::adsSeeInc($ads);
         return view('vendor.ads.defaut', compact('ads'));
     }
