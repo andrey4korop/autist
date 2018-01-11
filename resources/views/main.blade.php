@@ -2,12 +2,12 @@
 
 @section('content')
 
-    <div class="social">
+    {{--<div class="social">
         <a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
         <a href=""><i class="fa fa-youtube" aria-hidden="true"></i></a>
         <a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a>
         <a href=""><i class="fa fa-rss" aria-hidden="true"></i></a>
-    </div>
+    </div>--}}
     {!! Ads::render() !!}
     <div class="top_menu">
         @each('vendor.menu.top_menu', App\TopMenu::with('page')->orderBy('_lft')->get(), 'menu')
@@ -131,12 +131,38 @@
     <div class="block block_forum">
         <h1>ФОРУМ</h1>
         <p>оберіть один з топиків нашого форуму</p>
-        <div class="forum">
-            @foreach($Channels as $Channel)
-            <a href="{{route('channel', ['channel' => $Channel->slug])}}" class="forum_category">
-                <i class="fa fa-podcast" aria-hidden="true"></i>
-                <p>{{$Channel->name}}</p>
-            </a>
+        <div class="forum-content">
+            @foreach ($channels as $channel)
+                <div class="channel">
+                    <div class="channel_title">
+                        <a href="{{route('channel', ['channel' => $channel->slug])}}">{{ $channel->name }}</a>
+                        <i class="fa fa-comment" aria-hidden="true"></i>
+                    </div>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th class="td1"></th>
+                            <th class="left_align td2">Тема</th>
+                            <th class="text td3">Останнє повідомлення</th>
+                            <th class="td4">Автор</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @forelse($channel->threads as $thread)
+                            <tr>
+                                <td class="td1"><i class="fa fa-newspaper-o" aria-hidden="true"></i></td>
+                                <td class="left_align td2"><a href="{{route('replies', ['channel'=> $channel->slug, 'thread' =>$thread->id])}}">{{$thread->title}}</a></td>
+                                <td class="left_align text td3">{{strip_tags($thread->replies->isEmpty() ? $thread->body : $thread->replies->last()->body)}}</td>
+                                <td class="td4">{{$thread->author->name}}</td>
+                            </tr>
+                        @empty
+                        @endforelse
+                        </tbody>
+                    </table>
+                    <div class="channel_more">
+                        <a href="{{route('channel', ['channel' => $channel->slug])}}">Більше <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
             @endforeach
 
         </div>

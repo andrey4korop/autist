@@ -31,7 +31,7 @@ class PageController extends Controller
         $data['blogs'] = Blog::limit(6)->orderBy('created_at','desc')->get();
         $data['news'] = News::limit(4)->orderBy('created_at','desc')->get();
         $data['ThisInt'] = ThisInt::limit(1)->orderBy('created_at','desc')->first();
-        $data['Channels'] = Channel::all();
+        $data['channels'] = Channel::with('threads')->get();
         $data['Medias'] = Media::all();
         $data['CategoryBook'] = CategoryBook::all();
         $events = Event::all();

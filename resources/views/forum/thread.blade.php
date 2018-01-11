@@ -87,7 +87,7 @@
         {!! $replies->render() !!}
     </div>
     <form action="/{{Request::path()}}" class="forum_form" method="POST">
-        <p class="forum_form_title">Быстрый ответ</p>
+        <h1>Быстрый ответ</h1>
         <textarea name="body" id="" cols="30" rows="10"></textarea>
 
         <input type="submit">

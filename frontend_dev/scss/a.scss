@@ -16,8 +16,8 @@ body{
   background: url(../img/bg_main1.jpg) no-repeat center top fixed;
   background-size: cover;
 }
-textarea{
-  display: none;
+textarea, .mce-branding{
+  display: none !important;
 }
 
 .title{
@@ -208,9 +208,6 @@ ul#pagination{
     list-style: none;
     a, span{
       padding: 5px 10px;
-      border-radius: 5px;
-      border: 1px solid #bcbfc7;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.5)
     }
   }
 }
@@ -218,7 +215,9 @@ ul#pagination{
 .left{
   position: fixed;
   width: 250px;
-  float: left;
+  //float: left;
+  left: 0;
+  top: 20px;
   background: #fff;
   box-shadow: 2px 0 4px 2px rgba(0,0,0,.15);
 
@@ -249,7 +248,9 @@ ul#pagination{
         width: 100%;
         letter-spacing: 1px;
         &.current{
-          color: #99cc66;}
+          color: #fff;
+          background: #5591c6;
+        }
       }
     }
   }
@@ -282,7 +283,7 @@ ul#pagination{
   background: #fff;
   width: calc(100% - 300px);
   margin-left: 270px;
-  margin-top: 20px;
+  padding-top: 5px;
   display: flex;
   flex-direction: column;
   //float: left;
@@ -795,8 +796,7 @@ ul#pagination{
     .channel{
       margin: 25px 0;
       &_title{
-        background: url(/img/forum_title.png) repeat-x;
-        border-radius: 5px;
+        background: #5591c6;
         padding: 10px 25px;
         display: flex;
         flex-direction: row;
@@ -877,6 +877,8 @@ ul#pagination{
         @include size(10);
         border-left: 1px solid #bcbfc7;
         .forum_date{
+          background: #5591c6;
+          color: #fff;
           font-size: 14px;
           padding: 10px 15px;
           border-bottom: 1px solid #bcbfc7;

@@ -22,7 +22,7 @@
                 <tbody>
                 @forelse($channel->threads as $thread)
                     <tr>
-                        <td class="td1"><img src="/img/forum_nonew.png" alt=""></td>
+                        <td class="td1"><i class="fa fa-newspaper-o" aria-hidden="true"></i></td>
                         <td class="left_align td2"><a href="{{route('replies', ['channel'=> $channel->slug, 'thread' =>$thread->id])}}">{{$thread->title}}</a></td>
                         <td class="left_align text td3">{{strip_tags($thread->replies->isEmpty() ? $thread->body : $thread->replies->last()->body)}}</td>
                         <td class="td4">{{$thread->author->name}}</td>
