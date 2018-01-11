@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>{{$title or ''}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700|Roboto+Condensed:300,400,700|Roboto:300,400,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+    <!--<link href="https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700|Roboto+Condensed:300,400,700|Roboto:300,400,700&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">-->
     <link rel="icon" href="/img/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" type="text/css" href="/css/a.css">
     <link rel="stylesheet" type="text/css" href="/css/fullcalendar.min.css">

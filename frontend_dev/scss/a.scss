@@ -6,9 +6,36 @@
 @import "vendor/slick-theme";
 @include reset();
 
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../fonts/ProximaNova-Regular.eot');
+  src: url('../fonts/ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/ProximaNova-Regular.woff') format('woff'),
+  url('../fonts/ProximaNova-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../fonts/ProximaNova-Bold.eot');
+  src: url('../fonts/ProximaNova-Bold.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/ProximaNova-Bold.woff') format('woff'),
+  url('../fonts/ProximaNova-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../fonts/ProximaNova-RegularIt.eot');
+  src: url('../fonts/ProximaNova-RegularIt.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/ProximaNova-RegularIt.woff') format('woff'),
+  url('../fonts/ProximaNova-RegularIt.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
 html,body{
   width: 100%;
-  font-family: "Roboto Condensed", Arial, Tahoma, sans-serif;
+  font-family: "Proxima Nova", Arial, Tahoma, sans-serif;
   font-weight: 400;
   box-sizing: border-box;
 }
@@ -42,11 +69,14 @@ textarea, .mce-branding{
 }
 .read_more{
   display: inline-block;
-  color: #161922;
+  align-self: flex-start;
+  color: #fff;
   text-decoration: none;
   font-style: italic;
-  margin: 15px 0 15px 0;
+  //margin: 15px 0 15px 0;
+  padding: 7px;
   font-size: 15px;
+  background: #5591c6;
 }
 .date{
   text-decoration: none;
@@ -320,7 +350,7 @@ ul#pagination{
     padding: 0 15px;
     font-size: 100%;
     letter-spacing: 0px;
-    font-family: "Roboto", Arial, Tahoma, sans-serif;
+    //font-family: "Roboto", Arial, Tahoma, sans-serif;
     color: #626262;
     strong{
       font-weight: 700;
@@ -335,6 +365,9 @@ ul#pagination{
     a{
       text-decoration: none;
       color: #6699cc;
+      &.read_more{
+        color: #fff;
+      }
     }
     h1{
       //font-weight: 700;
@@ -439,7 +472,7 @@ ul#pagination{
     font-size: 42px;
     line-height: 42px;
     text-align: center;
-    font-family: "Roboto", Arial, Tahoma, sans-serif;
+    //font-family: "Roboto", Arial, Tahoma, sans-serif;
     font-weight: 400;
   }
   .this_interesting{
