@@ -1,3 +1,45 @@
+// var gulp = require('gulp'),
+	// sass = require('gulp-sass'),
+    // smartgrid = require('smart-grid');
+// var browserSync = require('browser-sync').create();
+// var gcmq = require('gulp-group-css-media-queries');
+// var autoprefixer = require('gulp-autoprefixer');
+// var cleanCSS = require('gulp-clean-css');
+// var settings = {
+    // outputStyle: 'sass', /* less || scss || sass || styl */
+    // columns: 12, /* number of grid columns */
+    // offset: "30px", /* gutter width px || % */
+    // container: {
+        // maxWidth: '1200px', /* max-width �n very large screen */
+        // fields: '30px' /* side fields */
+    // },
+    // breakPoints: {
+        // lg: {
+            // 'width': '1100px', /* -> @media (max-width: 1100px) */
+            // 'fields': '30px' /* side fields */
+        // },
+        // md: {
+            // 'width': '960px',
+            // 'fields': '15px'
+        // },
+        // sm: {
+            // 'width': '780px',
+            // 'fields': '15px'
+        // },
+        // xs: {
+            // 'width': '560px',
+            // 'fields': '15px'
+        // }
+        // /* 
+        // We can create any quantity of break points.
+
+        // some_name: {
+            // some_width: 'Npx',
+            // some_offset: 'N(px|%)'
+        // }
+        // */
+    // }
+// };
 var gulp = require('gulp'),
 	sass = require('gulp-sass'),
     smartgrid = require('smart-grid');
@@ -6,11 +48,11 @@ var gcmq = require('gulp-group-css-media-queries');
 var autoprefixer = require('gulp-autoprefixer');
 var cleanCSS = require('gulp-clean-css');
 var settings = {
-    outputStyle: 'sass', /* less || scss || sass || styl */
+    outputStyle: 'scss', /* less || scss || sass || styl */
     columns: 12, /* number of grid columns */
     offset: "30px", /* gutter width px || % */
     container: {
-        maxWidth: '1200px', /* max-width �n very large screen */
+        maxWidth: '1720px', /* max-width �n very large screen */
         fields: '30px' /* side fields */
     },
     breakPoints: {
@@ -40,6 +82,8 @@ var settings = {
         */
     }
 };
+
+
 	
 gulp.task('sass', function(){
 	return gulp.src('./scss/a.scss')
